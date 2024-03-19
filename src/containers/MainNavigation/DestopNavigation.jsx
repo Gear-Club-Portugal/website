@@ -10,7 +10,7 @@ function DestopNavigation(props) {
     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
       {pages.map(
         (page) =>
-          page.slug && (
+          page.mainMenu && (
             <Button component={Link} key={page.slug} to={`/${page.slug}`} sx={{ color: '#fff' }}>
               {page.title}
             </Button>
@@ -23,6 +23,7 @@ function DestopNavigation(props) {
 DestopNavigation.propTypes = {
   pages: PropTypes.arrayOf(
     PropTypes.shape({
+      mainMenu: PropTypes.bool.isRequired,
       slug: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
     }),

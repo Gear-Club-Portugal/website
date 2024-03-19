@@ -18,7 +18,7 @@ function MobileNavigation(props) {
           <List>
             {pages.map(
               (page) =>
-                page.slug && (
+                page.mainMenu && (
                   <ListItem key={page.slug} disablePadding>
                     <ListItemButton component={Link} to={page.slug} sx={{ textAlign: 'center' }}>
                       <ListItemText primary={page.title} />
@@ -38,6 +38,7 @@ MobileNavigation.propTypes = {
   mobileOpen: PropTypes.bool.isRequired,
   pages: PropTypes.arrayOf(
     PropTypes.shape({
+      mainMenu: PropTypes.bool.isRequired,
       slug: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
     }),

@@ -21,6 +21,7 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   pages: PropTypes.arrayOf(
     PropTypes.shape({
+      mainMenu: PropTypes.bool.isRequired,
       slug: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
     }),

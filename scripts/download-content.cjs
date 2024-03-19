@@ -28,14 +28,11 @@ const handlePagesUpdate = (entries) => {
     
     items.map((item) => {
         const slug = item.fields.slug ? Object.values(item.fields.slug)[0] : "";
-        data[contentType][LOCALE_PT].push({
-            slug,
-            title: item.fields.title[LOCALE_PT]
-        })
-        data[contentType][LOCALE_EN].push({
-            slug,
-            title: item.fields.title[LOCALE_EN]
-        })
+        const mainMenu = item.fields.mainMenu ? Object.values(item.fields.mainMenu)[0] : false;
+        const itemData = {mainMenu, slug}
+
+        data[contentType][LOCALE_PT].push({ ...itemData, title: item.fields.title[LOCALE_PT] })
+        data[contentType][LOCALE_EN].push({ ...itemData, title: item.fields.title[LOCALE_EN] })
     })
     
     fileWritter({contentType, content: data});
