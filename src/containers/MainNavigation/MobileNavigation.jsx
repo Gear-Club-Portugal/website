@@ -6,6 +6,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
+import LanguageSwitcher from '../../components/LanguageSwitcher';
+import Separator from '../../components/Separator';
 import TopDrawer from '../../components/TopDrawer';
 
 function MobileNavigation(props) {
@@ -14,19 +16,20 @@ function MobileNavigation(props) {
   return (
     <nav>
       <TopDrawer handleOnClose={handleDrawerToggle} open={mobileOpen}>
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'left' }}>
           <List>
-            {pages.map(
-              (page) =>
-                page.mainMenu && (
-                  <ListItem key={page.slug} disablePadding>
-                    <ListItemButton component={Link} to={page.slug} sx={{ textAlign: 'center' }}>
-                      <ListItemText primary={page.title} />
-                    </ListItemButton>
-                  </ListItem>
-                ),
-            )}
+            {pages.map((page) => (
+              <ListItem key={page.slug} disablePadding>
+                <ListItemButton component={Link} to={page.slug} sx={{ textAlign: 'left' }}>
+                  <ListItemText primary={page.title} />
+                </ListItemButton>
+              </ListItem>
+            ))}
           </List>
+
+          <Separator />
+
+          <LanguageSwitcher />
         </Box>
       </TopDrawer>
     </nav>
@@ -38,7 +41,6 @@ MobileNavigation.propTypes = {
   mobileOpen: PropTypes.bool.isRequired,
   pages: PropTypes.arrayOf(
     PropTypes.shape({
-      mainMenu: PropTypes.bool.isRequired,
       slug: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
     }),

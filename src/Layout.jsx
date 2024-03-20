@@ -1,31 +1,34 @@
+import { useEffect } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 
 import MainNavigation from './containers/MainNavigation';
+import Footer from './containers/Footer/index.js';
 
 function Layout(props) {
-  const { children, pages } = props;
+  const { handleLanguageChange } = props;
+  const { lang } = useParams();
+
+  useEffect(() => {
+    handleLanguageChange(lang);
+  }, [lang]);
 
   return (
     <Container>
-      <MainNavigation pages={pages} />
+      <MainNavigation />
       <Toolbar sx={{ height: '80px' }} />
 
-      {children}
+      <Outlet />
+
+      <Footer />
     </Container>
   );
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      mainMenu: PropTypes.bool.isRequired,
-      slug: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  handleLanguageChange: PropTypes.func.isRequired,
 };
 
 export default Layout;

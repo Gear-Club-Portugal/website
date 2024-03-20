@@ -10,6 +10,7 @@ import '@fontsource/oswald/500.css';
 import '@fontsource/oswald/700.css';
 
 import { theme } from './theme.js';
+import './i18n';
 
 import App from './App.jsx';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -10,9 +10,18 @@ import IconButton from '../../components/IconButton';
 import MobileNavigation from './MobileNavigation.jsx';
 import DestopNavigation from './DestopNavigation.jsx';
 
-function MainNavigation(props) {
-  const { pages } = props;
+function MainNavigation() {
+  const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const pages = [
+    { slug: 'lisbon-meets-fetish', title: t('lisbonMeetsFetish') },
+    { slug: 'events', title: t('events') },
+    { slug: 'blog', title: t('blog') },
+    { slug: 'members', title: t('members') },
+    { slug: 'about-gcp', title: t('aboutGcp') },
+    { slug: 'contacts', title: t('contacts') },
+  ];
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -36,15 +45,5 @@ function MainNavigation(props) {
     </Box>
   );
 }
-
-MainNavigation.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      mainMenu: PropTypes.bool.isRequired,
-      slug: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
 
 export default MainNavigation;
