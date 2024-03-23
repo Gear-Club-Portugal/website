@@ -27,7 +27,9 @@ function MobileNavigation(props) {
             ))}
           </List>
 
-          <Separator />
+          <Box sx={{ mx: '16px' }}>
+            <Separator />
+          </Box>
 
           <LanguageSwitcher />
         </Box>

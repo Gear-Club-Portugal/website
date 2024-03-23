@@ -14,6 +14,11 @@ const resources = {
       members: 'Members',
       aboutGcp: 'About GCP',
       contacts: 'Contacts',
+      privacyPolicy: 'Privacy Policy',
+      termsOfUse: 'Terms of Use',
+      socialNetworks: 'Social Networks',
+      newsletter: 'Newsletter',
+      siteMap: 'Site Map',
     },
   },
   pt: {
@@ -25,6 +30,11 @@ const resources = {
       members: 'Membros',
       aboutGcp: 'Sobre o GCP',
       contacts: 'Contactos',
+      privacyPolicy: 'Política de Privacidade',
+      termsOfUse: 'Termos de Uso',
+      socialNetworks: 'Redes Sociais',
+      newsletter: 'Newsletter',
+      siteMap: 'Mapa do Site',
     },
   },
 };

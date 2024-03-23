@@ -1,26 +1,27 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 
-import GCPLogo from '../../components/GCPLogo';
-import IconButton from '../../components/IconButton';
+import GCPLogo from '~/components/GCPLogo';
+import IconButton from '~/components/IconButton';
 import MobileNavigation from './MobileNavigation.jsx';
 import DestopNavigation from './DestopNavigation.jsx';
 
-function MainNavigation() {
-  const { t } = useTranslation();
+function MainNavigation(props) {
+  const { routes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const pages = [
-    { slug: 'lisbon-meets-fetish', title: t('lisbonMeetsFetish') },
-    { slug: 'events', title: t('events') },
-    { slug: 'blog', title: t('blog') },
-    { slug: 'members', title: t('members') },
-    { slug: 'about-gcp', title: t('aboutGcp') },
-    { slug: 'contacts', title: t('contacts') },
+    routes.lisbonMeetsFetish,
+    routes.events,
+    routes.blog,
+    routes.members,
+    routes.aboutGcp,
+    routes.contacts,
   ];
 
   const handleDrawerToggle = () => {
@@ -45,5 +46,9 @@ function MainNavigation() {
     </Box>
   );
 }
+
+MainNavigation.propTypes = {
+  routes: PropTypes.object.isRequired,
+};
 
 export default MainNavigation;

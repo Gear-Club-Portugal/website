@@ -1,6 +1,12 @@
-'use client';
-
 import { createTheme } from '@mui/material/styles';
+
+const fontWeight = {
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semiBold: 600,
+  bold: 700,
+};
 
 const theme = createTheme({
   palette: {
@@ -14,6 +20,9 @@ const theme = createTheme({
     primary: {
       main: '#0202fa',
     },
+    secondary: {
+      main: '#ffffff',
+    },
     error: {
       main: '#940607',
     },
@@ -26,5 +35,12 @@ const theme = createTheme({
     fontSize: 16,
   },
 });
+
+theme.typography.h5 = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 23,
+  fontWeight: fontWeight.bold,
+  lineHeight: 'auto',
+};
 
 export { theme };
