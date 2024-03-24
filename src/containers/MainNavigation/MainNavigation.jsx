@@ -8,8 +8,9 @@ import Toolbar from '@mui/material/Toolbar';
 
 import GCPLogo from '~/components/GCPLogo';
 import IconButton from '~/components/IconButton';
-import MobileNavigation from './MobileNavigation.jsx';
-import DestopNavigation from './DestopNavigation.jsx';
+
+import MobileNavigation from './components/MobileNavigation';
+import DestopNavigation from './components/DesktopNavigation';
 
 function MainNavigation(props) {
   const { routes } = props;

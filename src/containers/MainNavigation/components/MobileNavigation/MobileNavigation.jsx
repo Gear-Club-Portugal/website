@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
-import LanguageSwitcher from '../../components/LanguageSwitcher';
-import Separator from '../../components/Separator';
-import TopDrawer from '../../components/TopDrawer';
+import LanguageSwitcher from '~/components/LanguageSwitcher';
+import Separator from '~/components/Separator';
+import TopDrawer from '~/components/TopDrawer';
 
 function MobileNavigation(props) {
   const { handleDrawerToggle, mobileOpen, pages } = props;
