@@ -10,7 +10,7 @@ function DestopNavigation(props) {
   return (
     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
       {pages.map((page) => (
-        <Button component={Link} key={page.slug} to={`/${page.slug}`} sx={{ color: '#fff' }}>
+        <Button component={Link} key={page.slug} to={page.slug} sx={{ color: '#fff' }}>
           {page.title}
         </Button>
       ))}

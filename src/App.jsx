@@ -44,7 +44,7 @@ function App() {
         path="/:lang"
         element={<Layout config={config} handleLanguageChange={handleLanguageValidation} routes={localizedPages} />}
       >
-        <Route index element={<h1>GCP</h1>} />
+          <Route index element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

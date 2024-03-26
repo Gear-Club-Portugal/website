@@ -37,7 +37,7 @@ function SiteMap(props) {
         <Box component="ul" sx={ulStyles}>
           {pages.map((page) => (
             <li key={page.slug}>
-              <Button component={Link} to={`/${page.slug}`} sx={linkButtonStyles}>
+              <Button component={Link} to={page.slug} sx={linkButtonStyles}>
                 {page.title}
               </Button>
             </li>
