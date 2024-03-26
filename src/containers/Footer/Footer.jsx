@@ -17,7 +17,7 @@ function Footer(props) {
     <Box>
       <Separator />
 
-      <Box sx={{ textTransform: 'uppercase', mt: '32px' }}>
+      <Box sx={{ textTransform: 'uppercase', mt: '30px' }}>
         <SiteMap routes={routes} />
 
         {config.contacts && <Contacts contacts={config.contacts} />}
@@ -26,10 +26,8 @@ function Footer(props) {
 
         {config.socials && <SocialMedia socials={config.socials} />}
 
-        <Box>
-          <Typography sx={{ mt: '46px', textAlign: 'center' }}>
-            {new Date().getFullYear()} © Gear Club Portugal
-          </Typography>
+        <Box sx={{ p: '16px', mt: '30px' }}>
+          <Typography sx={{ textAlign: 'center' }}>{new Date().getFullYear()} © Gear Club Portugal</Typography>
         </Box>
       </Box>
     </Box>
