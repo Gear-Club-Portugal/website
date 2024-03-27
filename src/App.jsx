@@ -19,7 +19,7 @@ function App() {
   const localizedPages = routes(t);
 
   useEffect(() => {
-    fetch('data/config.toml')
+    fetch('/data/config.toml')
       .then((response) => response.text())
       .then((config) => {
         const data = toml.parse(config);
@@ -44,7 +44,7 @@ function App() {
         path="/:lang"
         element={<Layout config={config} handleLanguageChange={handleLanguageValidation} routes={localizedPages} />}
       >
-          <Route index element={<NotFound />} />
+        <Route index element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

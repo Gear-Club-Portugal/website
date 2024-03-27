@@ -13,6 +13,24 @@ const ulStyles = {
 };
 const linkButtonStyles = { color: '#fff', width: '100%', justifyContent: 'left' };
 
+function PoliciesSiteMap(props) {
+  const { routes } = props;
+
+  const pages = [routes.privacyPolicy, routes.termsOfUse];
+
+  return (
+    <Box component="ul" sx={ulStyles}>
+      {pages.map((page) => (
+        <li key={page.slug}>
+          <Button component={Link} to={page.slug} sx={linkButtonStyles}>
+            {page.title}
+          </Button>
+        </li>
+      ))}
+    </Box>
+  );
+}
+
 function SiteMap(props) {
   const { routes } = props;
   const { t } = useTranslation();
@@ -44,14 +62,8 @@ function SiteMap(props) {
           ))}
         </Box>
 
-        <Box component="ul" sx={ulStyles}>
-          {policyPages.map((page) => (
-            <li key={page.slug}>
-              <Button component={Link} to={`/${page.slug}`} sx={linkButtonStyles}>
-                {page.title}
-              </Button>
-            </li>
-          ))}
+        <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
+          <PoliciesSiteMap routes={routes} />
         </Box>
       </Box>
     </Box>
@@ -62,4 +74,5 @@ SiteMap.propTypes = {
   routes: PropTypes.object.isRequired,
 };
 
+export { PoliciesSiteMap };
 export default SiteMap;
