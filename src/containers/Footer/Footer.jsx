@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import Separator from '~/components/Separator';
+import config from '~/config.toml';
 
 import SiteMap, { PoliciesSiteMap } from './components/SiteMap';
 import Contacts from './components/Contacts';
@@ -12,7 +13,7 @@ import Newsletter from './components/Newsletter';
 import SocialMedia from './components/SocialMedia';
 
 function Footer(props) {
-  const { config, routes } = props;
+  const { routes } = props;
 
   return (
     <Box>
@@ -54,7 +55,6 @@ function Footer(props) {
 }
 
 Footer.propTypes = {
-  config: PropTypes.shape().isRequired,
   routes: PropTypes.object.isRequired,
 };
 

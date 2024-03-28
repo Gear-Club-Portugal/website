@@ -22,7 +22,7 @@ function ExternalLinkButton(props) {
   );
 }
 
-ExternalLinkButton.defaultProps = {
+ExternalLinkButton.propTypes = {
   link: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };

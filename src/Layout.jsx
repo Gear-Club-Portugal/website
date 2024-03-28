@@ -9,12 +9,12 @@ import MainNavigation from './containers/MainNavigation';
 import Footer from './containers/Footer/index.js';
 
 function Layout(props) {
-  const { config, handleLanguageChange, routes } = props;
+  const { handleLanguageChange, routes } = props;
   const { lang } = useParams();
 
   useEffect(() => {
     handleLanguageChange(lang);
-  }, [lang]);
+  }, [lang]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Container>
@@ -23,13 +23,12 @@ function Layout(props) {
 
       <Outlet />
 
-      <Footer config={config} routes={routes} />
+      <Footer routes={routes} />
     </Container>
   );
 }
 
 Layout.propTypes = {
-  config: PropTypes.shape().isRequired,
   handleLanguageChange: PropTypes.func.isRequired,
   routes: PropTypes.object.isRequired,
 };

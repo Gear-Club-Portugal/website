@@ -1,0 +1,12 @@
+[contacts]
+    email = "info@gearclubportugal.com"
+
+[socials]
+    [socials.facebook]
+    id = "gearclubportugal.page"
+    
+    [socials.instagram]
+    id = "gearclubportugal"
+    
+    [socials.x]
+    id = "ClubeGear"

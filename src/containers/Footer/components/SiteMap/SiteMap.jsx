@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 
 const ulStyles = {
   listStyleType: 'none',
-  //    margin: 0,
   padding: 0,
 };
 const linkButtonStyles = { color: '#fff', width: '100%', justifyContent: 'left' };
@@ -31,6 +30,10 @@ function PoliciesSiteMap(props) {
   );
 }
 
+PoliciesSiteMap.propTypes = {
+  routes: PropTypes.object.isRequired,
+};
+
 function SiteMap(props) {
   const { routes } = props;
   const { t } = useTranslation();
@@ -44,8 +47,6 @@ function SiteMap(props) {
     routes.aboutGcp,
     routes.contacts,
   ];
-
-  const policyPages = [routes.privacyPolicy, routes.termsOfUse];
 
   return (
     <Box sx={{ mt: '32px' }}>
