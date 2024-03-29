@@ -11,7 +11,7 @@ function SocialMedia(props) {
   const { t } = useTranslation();
 
   return (
-    <Box sx={{ mt: '32px' }}>
+    <Box>
       <Typography variant="h5">{t('socialNetworks')}</Typography>
 
       <Box sx={{ mt: '16px', 'a + a': { mt: '16px' } }}>

@@ -49,7 +49,7 @@ function SiteMap(props) {
   ];
 
   return (
-    <Box sx={{ mt: '32px' }}>
+    <Box>
       <Typography variant="h5">{t('siteMap')}</Typography>
 
       <Box sx={{ mt: '16px', a: { p: 0 } }}>
