@@ -11,6 +11,7 @@ import IconButton from '~/components/IconButton';
 
 import MobileNavigation from './components/MobileNavigation';
 import DestopNavigation from './components/DesktopNavigation';
+import Container from '@mui/material/Container';
 
 function MainNavigation(props) {
   const { routes } = props;
@@ -32,15 +33,17 @@ function MainNavigation(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar component="nav" color="inherit" sx={{ zIndex: 1300 }}>
-        <Toolbar sx={{ height: '80px' }}>
-          <GCPLogo />
+        <Container sx={{ p: '0 !important' }}>
+          <Toolbar sx={{ height: '80px' }}>
+            <GCPLogo />
 
-          <IconButton handleClick={handleDrawerToggle}>
-            <MenuIcon />
-          </IconButton>
+            <IconButton handleClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
 
-          <DestopNavigation pages={pages} />
-        </Toolbar>
+            <DestopNavigation pages={pages} />
+          </Toolbar>
+        </Container>
       </AppBar>
 
       <MobileNavigation handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} pages={pages} />
