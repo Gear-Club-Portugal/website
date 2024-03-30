@@ -17,8 +17,6 @@ function Footer(props) {
 
   return (
     <Box>
-      <Separator />
-
       <Box sx={{ textTransform: 'uppercase', mt: '30px' }}>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={4} sx={{ pr: { xs: 0, sm: '16px' } }}>

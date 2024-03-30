@@ -16,6 +16,7 @@ const theme = createTheme({
     },
     text: {
       primary: '#ffffff',
+      secondary: '#000000',
     },
     primary: {
       main: '#0202fa',
@@ -36,9 +37,23 @@ const theme = createTheme({
   },
 });
 
+theme.typography.h4 = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 28,
+  fontWeight: fontWeight.bold,
+  lineHeight: 'auto',
+};
+
 theme.typography.h5 = {
   fontFamily: theme.typography.fontFamily,
   fontSize: 23,
+  fontWeight: fontWeight.bold,
+  lineHeight: 'auto',
+};
+
+theme.typography.body1 = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 16,
   fontWeight: fontWeight.bold,
   lineHeight: 'auto',
 };
