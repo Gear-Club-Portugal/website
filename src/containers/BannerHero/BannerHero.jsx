@@ -35,14 +35,16 @@ function BannerHero(props) {
         >
           <Box sx={{ flexGrow: 1 }}>
             <Box>
-              <Typography variant="h4" sx={tytleStyles}>
+              <Typography variant="h1" sx={tytleStyles}>
                 {item.title}
               </Typography>
             </Box>
           </Box>
 
           <Box>
-            <Typography sx={subtitleStyles}>{item.subtitle1}</Typography>
+            <Typography variant="h6" sx={subtitleStyles}>
+              {item.subtitle1}
+            </Typography>
             <Typography sx={{ ...subtitleStyles, mt: '4px' }}>{item.subtitle2}</Typography>
           </Box>
         </Paper>

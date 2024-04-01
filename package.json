@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "format": "npx prettier ./src/ --write",
+    "format": "npx prettier ./src/ ./scripts/ --write",
     "format:check": "npx prettier ./src/ --check",
     "preview": "vite preview",
     "download-data": "node --env-file=.env ./scripts/download-content.cjs"
@@ -29,6 +29,7 @@
     "toml": "^3.0.0"
   },
   "devDependencies": {
+    "@contentful/rich-text-html-renderer": "^16.3.5",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react": "^4.2.1",

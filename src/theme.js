@@ -37,25 +37,75 @@ const theme = createTheme({
   },
 });
 
+theme.typography.h1 = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 41,
+  lineHeight: '60px',
+  fontWeight: fontWeight.bold,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 32,
+    lineHeight: '48px',
+  },
+};
+
 theme.typography.h4 = {
   fontFamily: theme.typography.fontFamily,
   fontSize: 28,
   fontWeight: fontWeight.bold,
-  lineHeight: 'auto',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 23,
+    lineHeight: '32px',
+  },
 };
 
 theme.typography.h5 = {
   fontFamily: theme.typography.fontFamily,
-  fontSize: 23,
+  fontSize: 25,
   fontWeight: fontWeight.bold,
-  lineHeight: 'auto',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 20,
+    lineHeight: '30px',
+  },
+};
+
+theme.typography.h6 = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 22,
+  fontWeight: fontWeight.bold,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 18,
+    lineHeight: '30px',
+  },
 };
 
 theme.typography.body1 = {
   fontFamily: theme.typography.fontFamily,
-  fontSize: 16,
-  fontWeight: fontWeight.bold,
-  lineHeight: 'auto',
+  fontWeight: fontWeight.regular,
+  fontSize: 20,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 16,
+    lineHeight: '24px',
+  },
 };
 
-export { theme };
+theme.typography.body2 = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 16,
+  fontWeight: fontWeight.bold,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 12,
+    lineHeight: '16px',
+  },
+};
+
+theme.typography.caption = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 18,
+  fontWeight: fontWeight.regular,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 14,
+    lineHeight: '20px',
+  },
+};
+
+export { fontWeight, theme };

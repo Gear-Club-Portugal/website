@@ -19,6 +19,7 @@ const resources = {
       socialNetworks: 'Social Networks',
       newsletter: 'Newsletter',
       siteMap: 'Site Map',
+      moreBlogs: 'More Blogs',
     },
   },
   pt: {
@@ -35,6 +36,7 @@ const resources = {
       socialNetworks: 'Redes Sociais',
       newsletter: 'Newsletter',
       siteMap: 'Mapa do Site',
+      moreBlogs: 'Mais Blogs',
     },
   },
 };

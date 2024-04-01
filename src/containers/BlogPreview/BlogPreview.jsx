@@ -1,37 +1,36 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
-import BannerHero from '~/containers/BannerHero';
-import BlogPreview from '~/containers/BlogPreview';
+import PostPreview from './components/PostPreview';
+import ExternalLinkButton from '~/components/ExternalLinkButton';
 
-import Separator from '~/components/Separator';
-
-function Home(props) {
-  const { bannerItems, posts, routes } = props;
+function BlogPreview(props) {
+  const { posts, routes } = props;
+  const { t } = useTranslation();
 
   return (
-    <Box component="main">
-      <BannerHero items={bannerItems} />
+    <Box>
+      <Grid container spacing={2}>
+        {posts.map((post) => {
+          return (
+            <Grid key={post.slug} item xs={12} sm={4}>
+              <PostPreview post={post} />
+            </Grid>
+          );
+        })}
+      </Grid>
 
-      <Separator extraSpace />
-
-      <BlogPreview posts={posts} routes={routes} />
-
-      <Separator extraSpace />
+      <Box sx={{ mt: '16px' }}>
+        <ExternalLinkButton link={routes.blog.slug} text={t('moreBlogs')} />
+      </Box>
     </Box>
   );
 }
 
-Home.propTypes = {
-  bannerItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      subtitle1: PropTypes.string.isRequired,
-      subtitle2: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+BlogPreview.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -53,4 +52,4 @@ Home.propTypes = {
   routes: PropTypes.object.isRequired,
 };
 
-export default Home;
+export default BlogPreview;

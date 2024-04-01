@@ -8,7 +8,11 @@ function GCPLogo() {
   return (
     <Box component={Link} to="" sx={{ flexGrow: 1, display: 'flex', textDecoration: 'none', color: '#fff' }}>
       <Box component="img" src={GCPLogoImage} sx={{ height: '46px', marginRight: '16px' }} />
-      <Typography variant="h6" component="div" sx={{ textTransform: 'uppercase' }}>
+      <Typography
+        variant="h5"
+        component="div"
+        sx={{ alignItems: 'center', display: 'grid', textTransform: 'uppercase' }}
+      >
         Gear Club Portugal
       </Typography>
     </Box>

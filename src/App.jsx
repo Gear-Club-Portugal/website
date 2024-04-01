@@ -7,6 +7,8 @@ import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 
 import { routes } from './routes.js';
+
+import posts from './assets/data/posts.json';
 import config from './config.toml';
 
 const supportedLanguages = ['pt', 'en'];
@@ -31,7 +33,10 @@ function App() {
   return (
     <Routes>
       <Route path="/:lang" element={<Layout handleLanguageChange={handleLanguageValidation} routes={localizedPages} />}>
-        <Route index element={<Home bannerItems={config[lang].banner} />} />
+        <Route
+          index
+          element={<Home bannerItems={config[lang].banner} posts={posts.posts[lang] ?? []} routes={localizedPages} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

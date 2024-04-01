@@ -12,7 +12,7 @@ function Separator(props) {
   );
 }
 
-Separator.defaultProps = {
+Separator.propTypes = {
   extraSpace: PropTypes.bool,
 };
 
