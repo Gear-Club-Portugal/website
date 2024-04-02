@@ -35,9 +35,7 @@ function PostPreview(props) {
 
         <CardHeader
           avatar={<Box component="img" src={post.author.avatar.url} height="31px" />}
-          action={
-            <Box sx={{ p: '10px', backgroundColor: '#000000', opacity: '50%', color: '#ffffff' }}>{post.category}</Box>
-          }
+          action={<Box sx={{ p: '10px', backgroundColor: '#00000080', color: '#ffffff' }}>{post.category}</Box>}
           title={post.author.name}
           titleTypographyProps={{ variant: 'caption' }}
           subheader={post.publishedAt}

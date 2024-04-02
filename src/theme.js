@@ -48,6 +48,16 @@ theme.typography.h1 = {
   },
 };
 
+theme.typography.h3 = {
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 32,
+  fontWeight: fontWeight.bold,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 26,
+    lineHeight: '40px',
+  },
+};
+
 theme.typography.h4 = {
   fontFamily: theme.typography.fontFamily,
   fontSize: 28,

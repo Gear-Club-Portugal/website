@@ -3,8 +3,10 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import Layout from './Layout.jsx';
-import NotFound from './pages/NotFound';
+
 import Home from './pages/Home';
+import Post from './pages/Post';
+import NotFound from './pages/NotFound';
 
 import { routes } from './routes.js';
 
@@ -37,6 +39,9 @@ function App() {
           index
           element={<Home bannerItems={config[lang].banner} posts={posts.posts[lang] ?? []} routes={localizedPages} />}
         />
+
+        <Route path={`${localizedPages.blog.slug}/:slug`} element={<Post posts={posts.posts[lang] ?? []} />} />
+
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
