@@ -29,7 +29,6 @@ const handlePostsUpdate = (entries) => {
     const { fields } = item;
     const { title, body } = fields;
     const category = Object.values(fields.category)[0].fields.title;
-
     const slug = Object.values(fields.slug)[0];
     const publishedAt = Object.values(fields.publishedAt)[0];
     const mainImage = Object.values(Object.values(fields.mainImage)[0].fields.file)[0];
@@ -40,9 +39,6 @@ const handlePostsUpdate = (entries) => {
     };
 
     const itemData = { slug, publishedAt, mainImage, author };
-
-    //    console.log(body.pt);
-    //    console.log('\npost', richTextRenderer.documentToHtmlString(body.pt));
 
     data[contentType][LOCALE_PT].push({
       ...itemData,
@@ -61,7 +57,46 @@ const handlePostsUpdate = (entries) => {
   fileWritter({ contentType, content: data });
 };
 
+const handleEnventsUpdate = (entries) => {
+  const { items } = entries;
+  const contentType = 'events';
+  const data = { [contentType]: { [LOCALE_PT]: [], [LOCALE_EN]: [] } };
+
+  items.map((item) => {
+    const { fields } = item;
+    const { name, description, program, packs } = fields;
+    const slug = Object.values(fields.slug)[0];
+    const eventDate = Object.values(fields.eventDate)[0];
+    const mainImage = Object.values(Object.values(fields.mainImage)[0].fields.file)[0];
+    const registerForm = Object.values(fields.registerForm)[0];
+
+    const itemData = { slug, eventDate, mainImage, registerForm };
+
+    data[contentType][LOCALE_PT].push({
+      ...itemData,
+      name: name[CONFLUENT_LOCALE_PT],
+      description: richTextRenderer.documentToHtmlString(description[CONFLUENT_LOCALE_PT]),
+      program: richTextRenderer.documentToHtmlString(program[CONFLUENT_LOCALE_PT]),
+      packs: richTextRenderer.documentToHtmlString(packs[CONFLUENT_LOCALE_PT]),
+    });
+    data[contentType][LOCALE_EN].push({
+      ...itemData,
+      name: name[CONFLUENT_LOCALE_EN],
+      description: richTextRenderer.documentToHtmlString(description[CONFLUENT_LOCALE_EN]),
+      program: richTextRenderer.documentToHtmlString(program[CONFLUENT_LOCALE_EN]),
+      packs: richTextRenderer.documentToHtmlString(packs[CONFLUENT_LOCALE_EN]),
+    });
+  });
+
+  fileWritter({ contentType, content: data });
+};
+
 client.withAllLocales
   .getEntries({ content_type: 'post', order: '-fields.publishedAt' })
   .then((entries) => handlePostsUpdate(entries))
+  .catch((error) => console.error(error));
+
+client.withAllLocales
+  .getEntries({ content_type: 'event', order: '-fields.eventDate' })
+  .then((entries) => handleEnventsUpdate(entries))
   .catch((error) => console.error(error));
