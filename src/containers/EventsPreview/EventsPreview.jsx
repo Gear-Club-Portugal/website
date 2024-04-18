@@ -5,56 +5,52 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import PostPreview from './components/PostPreview';
+import EventPreview from './components/EventPreview';
 import ExternalLinkButton from '~/components/ExternalLinkButton';
 
-function BlogPreview(props) {
-  const { posts, routes } = props;
+function EventsPreview(props) {
+  const { events, routes } = props;
   const { t } = useTranslation();
 
   return (
     <Box>
       <Typography variant="h3" sx={{ mb: '15px' }}>
-        {t('blog')}
+        {t('nextEvents')}
       </Typography>
 
       <Grid container spacing={2}>
-        {posts.map((post) => {
+        {events.map((event) => {
           return (
-            <Grid key={post.slug} item xs={12} sm={4}>
-              <PostPreview post={post} />
+            <Grid key={event.slug} item xs={12} sm={4}>
+              <EventPreview event={event} />
             </Grid>
           );
         })}
       </Grid>
 
       <Box sx={{ mt: '16px' }}>
-        <ExternalLinkButton link={routes.blog.slug} text={t('moreBlogs')} />
+        <ExternalLinkButton link={routes.events.slug} text={t('moreEvents')} />
       </Box>
     </Box>
   );
 }
 
-BlogPreview.propTypes = {
-  posts: PropTypes.arrayOf(
+EventsPreview.propTypes = {
+  events: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-      publishedAt: PropTypes.string.isRequired,
+      eventDate: PropTypes.string.isRequired,
       mainImage: PropTypes.shape({
         url: PropTypes.string.isRequired,
       }).isRequired,
-      author: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        avatar: PropTypes.shape({
-          url: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-      body: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      registerForm: PropTypes.string.isRequired,
+      program: PropTypes.string.isRequired,
+      packs: PropTypes.string.isRequired,
     }),
   ).isRequired,
   routes: PropTypes.object.isRequired,
 };
 
-export default BlogPreview;
+export default EventsPreview;

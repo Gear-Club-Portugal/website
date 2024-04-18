@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 
 import { routes } from './routes.js';
 
+import events from './assets/data/events.json';
 import posts from './assets/data/posts.json';
 import config from './config.toml';
 
@@ -37,7 +38,14 @@ function App() {
       <Route path="/:lang" element={<Layout handleLanguageChange={handleLanguageValidation} routes={localizedPages} />}>
         <Route
           index
-          element={<Home bannerItems={config[lang].banner} posts={posts.posts[lang] ?? []} routes={localizedPages} />}
+          element={
+            <Home
+              bannerItems={config[lang].banner}
+              events={events.events[lang] ?? []}
+              posts={posts.posts[lang] ?? []}
+              routes={localizedPages}
+            />
+          }
         />
 
         <Route path={`${localizedPages.blog.slug}/:slug`} element={<Post posts={posts.posts[lang] ?? []} />} />

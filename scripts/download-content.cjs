@@ -64,7 +64,7 @@ const handleEnventsUpdate = (entries) => {
 
   items.map((item) => {
     const { fields } = item;
-    const { name, description, program, packs } = fields;
+    const { name, shortName, textualEventDate, location, description, program, packs } = fields;
     const slug = Object.values(fields.slug)[0];
     const eventDate = Object.values(fields.eventDate)[0];
     const mainImage = Object.values(Object.values(fields.mainImage)[0].fields.file)[0];
@@ -75,6 +75,9 @@ const handleEnventsUpdate = (entries) => {
     data[contentType][LOCALE_PT].push({
       ...itemData,
       name: name[CONFLUENT_LOCALE_PT],
+      shortName: shortName[CONFLUENT_LOCALE_PT],
+      textualEventDate: textualEventDate[CONFLUENT_LOCALE_PT],
+      location: location[CONFLUENT_LOCALE_PT],
       description: richTextRenderer.documentToHtmlString(description[CONFLUENT_LOCALE_PT]),
       program: richTextRenderer.documentToHtmlString(program[CONFLUENT_LOCALE_PT]),
       packs: richTextRenderer.documentToHtmlString(packs[CONFLUENT_LOCALE_PT]),
@@ -82,6 +85,9 @@ const handleEnventsUpdate = (entries) => {
     data[contentType][LOCALE_EN].push({
       ...itemData,
       name: name[CONFLUENT_LOCALE_EN],
+      shortName: shortName[CONFLUENT_LOCALE_EN],
+      textualEventDate: textualEventDate[CONFLUENT_LOCALE_EN],
+      location: location[CONFLUENT_LOCALE_EN],
       description: richTextRenderer.documentToHtmlString(description[CONFLUENT_LOCALE_EN]),
       program: richTextRenderer.documentToHtmlString(program[CONFLUENT_LOCALE_EN]),
       packs: richTextRenderer.documentToHtmlString(packs[CONFLUENT_LOCALE_EN]),
