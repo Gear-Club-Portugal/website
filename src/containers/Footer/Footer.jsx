@@ -26,7 +26,7 @@ function Footer(props) {
           <Grid item xs={12} sm={4} sx={{ px: { xs: 0, sm: '16px' } }}>
             {config.contacts && <Contacts contacts={config.contacts} />}
 
-            <Newsletter />
+            {config.newsletter && <Newsletter newsletter={config.newsletter} />}
           </Grid>
 
           <Grid item xs={12} sm={4} sx={{ pl: { xs: 0, sm: '16px' } }}>
