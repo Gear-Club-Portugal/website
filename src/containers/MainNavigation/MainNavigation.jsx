@@ -14,7 +14,7 @@ import DestopNavigation from './components/DesktopNavigation';
 import Container from '@mui/material/Container';
 
 function MainNavigation(props) {
-  const { routes } = props;
+  const { lang, routes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const pages = [routes.lisbonMeetsFetish, routes.events, routes.blog, routes.members, routes.aboutGcp];
@@ -34,7 +34,7 @@ function MainNavigation(props) {
               <MenuIcon />
             </IconButton>
 
-            <DestopNavigation pages={pages} />
+            <DestopNavigation lang={lang} pages={pages} />
           </Toolbar>
         </Container>
       </AppBar>
@@ -45,6 +45,7 @@ function MainNavigation(props) {
 }
 
 MainNavigation.propTypes = {
+  lang: PropTypes.string.isRequired,
   routes: PropTypes.object.isRequired,
 };
 

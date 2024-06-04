@@ -18,7 +18,7 @@ function Layout(props) {
 
   return (
     <Container>
-      <MainNavigation routes={routes} />
+      <MainNavigation lang={lang} routes={routes} />
       <Toolbar sx={{ height: '80px' }} />
 
       <Outlet />
