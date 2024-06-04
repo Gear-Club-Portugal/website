@@ -17,14 +17,7 @@ function MainNavigation(props) {
   const { routes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const pages = [
-    routes.lisbonMeetsFetish,
-    routes.events,
-    routes.blog,
-    routes.members,
-    routes.aboutGcp,
-    routes.contacts,
-  ];
+  const pages = [routes.lisbonMeetsFetish, routes.events, routes.blog, routes.members, routes.aboutGcp];
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);

@@ -23,10 +23,6 @@ const routes = (t) => ({
     slug: 'about-gcp',
     title: t('aboutGcp'),
   },
-  contacts: {
-    slug: 'contacts',
-    title: t('contacts'),
-  },
   privacyPolicy: {
     slug: 'privacy-policy',
     title: t('privacyPolicy'),
