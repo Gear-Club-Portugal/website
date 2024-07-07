@@ -66,11 +66,12 @@ const handleEnventsUpdate = (entries) => {
     const { fields } = item;
     const { name, shortName, textualEventDate, location, description, program, packs } = fields;
     const slug = Object.values(fields.slug)[0];
+    const type = Object.values(fields.type)[0];
     const eventDate = Object.values(fields.eventDate)[0];
     const mainImage = Object.values(Object.values(fields.mainImage)[0].fields.file)[0];
     const registerForm = Object.values(fields.registerForm)[0];
 
-    const itemData = { slug, eventDate, mainImage, registerForm };
+    const itemData = { slug, type, eventDate, mainImage, registerForm };
 
     data[contentType][LOCALE_PT].push({
       ...itemData,

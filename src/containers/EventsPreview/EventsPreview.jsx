@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import EventPreview from './components/EventPreview';
-import ExternalLinkButton from '~/components/ExternalLinkButton';
+import LinkButton from '~/components/LinkButton';
 
 function EventsPreview(props) {
   const { events, routes } = props;
@@ -29,7 +29,7 @@ function EventsPreview(props) {
       </Grid>
 
       <Box sx={{ mt: '16px' }}>
-        <ExternalLinkButton link={routes.events.slug} text={t('moreEvents')} />
+        <LinkButton link={routes.events.slug} text={t('moreEvents')} />
       </Box>
     </Box>
   );

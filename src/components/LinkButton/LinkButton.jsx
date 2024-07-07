@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import Button from '@mui/material/Button';
 
-function ExternalLinkButton(props) {
-  const { link, text } = props;
+function LinkButton(props) {
+  const { link, text, external } = props;
 
   return (
     <Button
       component={Link}
       to={link}
-      target="_blank"
+      target={external ? '_blank' : ''}
       rel="noreferrer"
       referrerPolicy="no-referrer"
       variant="outlined"
@@ -22,9 +22,14 @@ function ExternalLinkButton(props) {
   );
 }
 
-ExternalLinkButton.propTypes = {
+LinkButton.propTypes = {
   link: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  external: PropTypes.bool,
 };
 
-export default ExternalLinkButton;
+LinkButton.defaultProps = {
+  external: false,
+};
+
+export default LinkButton;

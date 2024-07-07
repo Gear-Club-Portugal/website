@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import PostPreview from './components/PostPreview';
-import ExternalLinkButton from '~/components/ExternalLinkButton';
+import LinkButton from '~/components/LinkButton';
 
 function BlogPreview(props) {
   const { posts, routes } = props;
@@ -29,7 +29,7 @@ function BlogPreview(props) {
       </Grid>
 
       <Box sx={{ mt: '16px' }}>
-        <ExternalLinkButton link={routes.blog.slug} text={t('moreBlogs')} />
+        <LinkButton link={routes.blog.slug} text={t('moreBlogs')} />
       </Box>
     </Box>
   );

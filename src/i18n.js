@@ -22,6 +22,10 @@ const resources = {
       newsletter: 'Newsletter',
       siteMap: 'Site Map',
       moreBlogs: 'More Blogs',
+      enrollmentForm: 'Registration Form',
+      addToCalendar: 'Add to Calendar',
+      program: 'Program',
+      packs: 'Packs',
     },
   },
   pt: {
@@ -41,6 +45,10 @@ const resources = {
       newsletter: 'Newsletter',
       siteMap: 'Mapa do Site',
       moreBlogs: 'Mais Blogs',
+      enrollmentForm: 'Ficha de Inscriçao',
+      addToCalendar: 'Adicionar ao Calendário',
+      program: 'Program',
+      packs: 'Pacotes',
     },
   },
 };

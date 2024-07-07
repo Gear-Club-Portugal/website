@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import ExternalLinkButton from '~/components/ExternalLinkButton';
+import LinkButton from '~/components/LinkButton';
 
 function Contacts(props) {
   const { contacts } = props;
@@ -15,7 +15,7 @@ function Contacts(props) {
       <Typography variant="h5">{t('contacts')}</Typography>
 
       <Box sx={{ mt: '16px', 'a + a': { mt: '16px' } }}>
-        <ExternalLinkButton link={`mailto:${contacts.email}`} text={`Email ${contacts.email}`} />
+        <LinkButton link={`mailto:${contacts.email}`} text={`Email ${contacts.email}`} />
       </Box>
     </Box>
   );

@@ -16,6 +16,9 @@
     formUrl = "https://sow6n.mjt.lu/wgt/sow6n/x3ux/form?c=e05debff"
     embebedHelperScript = "https://app.mailjet.com/pas-nc-embedded-v1.js"
 
+[events]
+    calendar = "https://calendar.gearclubportugal.com/"
+
 [contacts]
     email = "info@gearclubportugal.com"
 
