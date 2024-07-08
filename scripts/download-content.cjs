@@ -20,6 +20,10 @@ const fileWritter = ({ contentType, content }) => {
   fs.writeFile(`${dataDirectory}/${contentType}.json`, JSON.stringify(content), (err) => err && console.error(err));
 };
 
+const objectValueOrNull = (object, key) => (typeof object === 'object' ? object[key] : null);
+const objectValueRichTextOrNull = (object, key) =>
+  typeof object === 'object' ? richTextRenderer.documentToHtmlString(object[key]) : null;
+
 const handlePostsUpdate = (entries) => {
   const { items } = entries;
   const contentType = 'posts';
@@ -69,29 +73,29 @@ const handleEnventsUpdate = (entries) => {
     const type = Object.values(fields.type)[0];
     const eventDate = Object.values(fields.eventDate)[0];
     const mainImage = Object.values(Object.values(fields.mainImage)[0].fields.file)[0];
-    const registerForm = Object.values(fields.registerForm)[0];
+    const registerForm = Object.values(fields.registerForm || {})[0];
 
     const itemData = { slug, type, eventDate, mainImage, registerForm };
 
     data[contentType][LOCALE_PT].push({
       ...itemData,
       name: name[CONFLUENT_LOCALE_PT],
-      shortName: shortName[CONFLUENT_LOCALE_PT],
-      textualEventDate: textualEventDate[CONFLUENT_LOCALE_PT],
-      location: location[CONFLUENT_LOCALE_PT],
-      description: richTextRenderer.documentToHtmlString(description[CONFLUENT_LOCALE_PT]),
-      program: richTextRenderer.documentToHtmlString(program[CONFLUENT_LOCALE_PT]),
-      packs: richTextRenderer.documentToHtmlString(packs[CONFLUENT_LOCALE_PT]),
+      shortName: objectValueOrNull(shortName, CONFLUENT_LOCALE_PT),
+      textualEventDate: objectValueOrNull(textualEventDate, CONFLUENT_LOCALE_PT),
+      location: objectValueOrNull(location, CONFLUENT_LOCALE_PT),
+      description: objectValueRichTextOrNull(description, CONFLUENT_LOCALE_PT),
+      program: objectValueRichTextOrNull(program, CONFLUENT_LOCALE_PT),
+      packs: objectValueRichTextOrNull(packs, CONFLUENT_LOCALE_PT),
     });
     data[contentType][LOCALE_EN].push({
       ...itemData,
       name: name[CONFLUENT_LOCALE_EN],
-      shortName: shortName[CONFLUENT_LOCALE_EN],
-      textualEventDate: textualEventDate[CONFLUENT_LOCALE_EN],
-      location: location[CONFLUENT_LOCALE_EN],
-      description: richTextRenderer.documentToHtmlString(description[CONFLUENT_LOCALE_EN]),
-      program: richTextRenderer.documentToHtmlString(program[CONFLUENT_LOCALE_EN]),
-      packs: richTextRenderer.documentToHtmlString(packs[CONFLUENT_LOCALE_EN]),
+      shortName: objectValueOrNull(shortName, CONFLUENT_LOCALE_EN),
+      textualEventDate: objectValueOrNull(textualEventDate, CONFLUENT_LOCALE_EN),
+      location: objectValueOrNull(location, CONFLUENT_LOCALE_EN),
+      description: objectValueRichTextOrNull(description, CONFLUENT_LOCALE_EN),
+      program: objectValueRichTextOrNull(program, CONFLUENT_LOCALE_EN),
+      packs: objectValueRichTextOrNull(packs, CONFLUENT_LOCALE_EN),
     });
   });
 

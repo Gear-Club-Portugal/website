@@ -26,9 +26,9 @@ function Event(props) {
   const { t } = useTranslation();
   const { slug } = useParams();
   const [event, setEvent] = useState();
-  const eventDescription = useWysiwygParser(event?.description ?? '', wysiwygVariantMapping);
-  const eventProgram = useWysiwygParser(event?.program ?? '', wysiwygVariantMapping);
-  const eventPacks = useWysiwygParser(event?.packs ?? '', wysiwygVariantMapping);
+  const eventDescription = useWysiwygParser(event?.description, wysiwygVariantMapping);
+  const eventProgram = useWysiwygParser(event?.program, wysiwygVariantMapping);
+  const eventPacks = useWysiwygParser(event?.packs, wysiwygVariantMapping);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,37 +58,49 @@ function Event(props) {
 
               <Box>{eventDescription}</Box>
 
-              <Box sx={{ mt: '16px' }}>
-                <LinkButton external link={event.registerForm} text={t('enrollmentForm')} />
-              </Box>
+              {event.registerForm && (
+                <Box sx={{ mt: '16px' }}>
+                  <LinkButton external link={event.registerForm} text={t('enrollmentForm')} />
+                </Box>
+              )}
 
               <Box sx={{ mt: '16px' }}>
                 <LinkButton external link={config.events.calendar} text={t('addToCalendar')} />
               </Box>
 
-              <Separator extraSpace />
+              {event?.program && (
+                <>
+                  <Separator extraSpace />
 
-              <Box>
-                <Typography variant="h3" sx={{ pb: '16px' }}>
-                  {t('program')}
-                </Typography>
+                  <Box>
+                    <Typography variant="h3" sx={{ pb: '16px' }}>
+                      {t('program')}
+                    </Typography>
 
-                <Box sx={wysiwygVariantStyles}>{eventProgram}</Box>
-              </Box>
+                    <Box sx={wysiwygVariantStyles}>{eventProgram}</Box>
+                  </Box>
+                </>
+              )}
 
-              <Separator extraSpace />
+              {event?.packs && (
+                <>
+                  <Separator extraSpace />
 
-              <Box>
-                <Typography variant="h3" sx={{ pb: '16px' }}>
-                  {t('packs')}
-                </Typography>
+                  <Box>
+                    <Typography variant="h3" sx={{ pb: '16px' }}>
+                      {t('packs')}
+                    </Typography>
 
-                <Box sx={wysiwygVariantStyles}>{eventPacks}</Box>
-              </Box>
+                    <Box sx={wysiwygVariantStyles}>{eventPacks}</Box>
+                  </Box>
+                </>
+              )}
 
-              <Box sx={{ mt: '16px' }}>
-                <LinkButton external link={event.registerForm} text={t('enrollmentForm')} />
-              </Box>
+              {event.registerForm && (
+                <Box sx={{ mt: '16px' }}>
+                  <LinkButton external link={event.registerForm} text={t('enrollmentForm')} />
+                </Box>
+              )}
             </Grid>
           </Grid>
         </Box>
