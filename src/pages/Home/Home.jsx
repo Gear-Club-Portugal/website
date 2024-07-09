@@ -46,9 +46,6 @@ Home.propTypes = {
         url: PropTypes.string.isRequired,
       }).isRequired,
       description: PropTypes.string.isRequired,
-      registerForm: PropTypes.string.isRequired,
-      program: PropTypes.string.isRequired,
-      packs: PropTypes.string.isRequired,
     }),
   ).isRequired,
   posts: PropTypes.arrayOf(

@@ -43,10 +43,6 @@ EventPreview.propTypes = {
       fileName: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
     }).isRequired,
-    description: PropTypes.string.isRequired,
-    registerForm: PropTypes.string.isRequired,
-    program: PropTypes.string.isRequired,
-    packs: PropTypes.string.isRequired,
   }),
 };
 

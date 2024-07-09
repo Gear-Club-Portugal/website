@@ -5,12 +5,15 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import useNextEvents from '~/hooks/useNextEvents';
+
 import EventPreview from './components/EventPreview';
 import LinkButton from '~/components/LinkButton';
 
 function EventsPreview(props) {
   const { events, routes } = props;
   const { t } = useTranslation();
+  const previewableEvents = useNextEvents(events, 3);
 
   return (
     <Box>
@@ -19,7 +22,7 @@ function EventsPreview(props) {
       </Typography>
 
       <Grid container spacing={2}>
-        {events.map((event) => {
+        {previewableEvents.map((event) => {
           return (
             <Grid key={event.slug} item xs={12} sm={4}>
               <EventPreview event={event} />
@@ -44,10 +47,6 @@ EventsPreview.propTypes = {
       mainImage: PropTypes.shape({
         url: PropTypes.string.isRequired,
       }).isRequired,
-      description: PropTypes.string.isRequired,
-      registerForm: PropTypes.string.isRequired,
-      program: PropTypes.string.isRequired,
-      packs: PropTypes.string.isRequired,
     }),
   ).isRequired,
   routes: PropTypes.object.isRequired,

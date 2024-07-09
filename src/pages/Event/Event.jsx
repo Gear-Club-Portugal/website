@@ -117,18 +117,17 @@ Event.propTypes = {
   events: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      shortName: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      packs: PropTypes.string.isRequired,
-      program: PropTypes.string.isRequired,
+      packs: PropTypes.string,
+      program: PropTypes.string,
       eventDate: PropTypes.string.isRequired,
       textualEventDate: PropTypes.string.isRequired,
       mainImage: PropTypes.shape({
         url: PropTypes.string.isRequired,
       }).isRequired,
       location: PropTypes.string.isRequired,
-      registerForm: PropTypes.string.isRequired,
+      registerForm: PropTypes.string,
     }),
   ).isRequired,
 };
