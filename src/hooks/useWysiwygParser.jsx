@@ -18,7 +18,7 @@ const useWysiwygParser = (htmlString, variantMapping = {}) => {
           <Typography
             component="p"
             variant={variantMapping.body1 ?? 'body1'}
-            sx={children.length === 0 && { mb: '24px' }}
+            sx={children.length === 0 ? { mb: '24px' } : {}}
           >
             {domToReact(children, options)}
           </Typography>

@@ -7,6 +7,7 @@ import Layout from './Layout.jsx';
 import Home from './pages/Home';
 import Post from './pages/Post';
 import Event from './pages/Event';
+import Events from './pages/Events';
 import NotFound from './pages/NotFound';
 
 import { routes } from './routes.js';
@@ -52,6 +53,10 @@ function App() {
         <Route path={`${localizedPages.blog.slug}/:slug`} element={<Post posts={posts.posts[lang] ?? []} />} />
 
         <Route path={`${localizedPages.events.slug}/:slug`} element={<Event events={events.events[lang] ?? []} />} />
+        <Route
+          path={`${localizedPages.events.slug}`}
+          element={<Events events={events.events[lang] ?? []} routes={localizedPages} />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Route>
