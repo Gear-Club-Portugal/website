@@ -7,6 +7,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
+import { pagesType } from '~/types';
+
 import LanguageSwitcher from '~/components/LanguageSwitcher';
 import Separator from '~/components/Separator';
 import TopDrawer from '~/components/TopDrawer';
@@ -42,12 +44,7 @@ function MobileNavigation(props) {
 MobileNavigation.propTypes = {
   handleDrawerToggle: PropTypes.func.isRequired,
   mobileOpen: PropTypes.bool.isRequired,
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      slug: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  pages: pagesType,
 };
 
 export default MobileNavigation;

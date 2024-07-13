@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 import Box from '@mui/material/Box';
+
+import { imageType } from '~/types';
 
 const imageContainerStyles = { width: '100%', height: '250px' };
 const imageStyles = { width: '100%', height: '100%', objectFit: 'contain' };
@@ -16,11 +15,6 @@ function ContainedImage(props) {
   );
 }
 
-ContainedImage.propTypes = {
-  image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    fileName: PropTypes.string.isRequired,
-  }).isRequired,
-};
+ContainedImage.propTypes = { image: imageType };
 
 export default ContainedImage;

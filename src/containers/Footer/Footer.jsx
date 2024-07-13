@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+
+import { routesType } from '~/types';
 
 import Separator from '~/components/Separator';
 import config from '~/config.toml';
@@ -52,8 +52,6 @@ function Footer(props) {
   );
 }
 
-Footer.propTypes = {
-  routes: PropTypes.object.isRequired,
-};
+Footer.propTypes = { routes: routesType };
 
 export default Footer;

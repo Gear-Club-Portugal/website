@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
+
+import { eventsType } from '~/types';
 
 import Separator from '~/components/Separator';
 
@@ -27,23 +28,6 @@ function Event(props) {
   );
 }
 
-Event.propTypes = {
-  events: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      packs: PropTypes.string,
-      program: PropTypes.string,
-      eventDate: PropTypes.string.isRequired,
-      textualEventDate: PropTypes.string.isRequired,
-      mainImage: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-      location: PropTypes.string.isRequired,
-      registerForm: PropTypes.string,
-    }),
-  ).isRequired,
-};
+Event.propTypes = { events: eventsType };
 
 export default Event;

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+
+import { postsType } from '~/types';
 
 import Separator from '~/components/Separator';
 
@@ -90,25 +91,6 @@ function Post(props) {
   );
 }
 
-Post.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-      publishedAt: PropTypes.string.isRequired,
-      mainImage: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-      author: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        avatar: PropTypes.shape({
-          url: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-      body: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
+Post.propTypes = { posts: postsType };
 
 export default Post;

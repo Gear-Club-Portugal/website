@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+
+import { postsType, routesType } from '~/types';
 
 import PostPreview from './components/PostPreview';
 import LinkButton from '~/components/LinkButton';
@@ -36,25 +37,8 @@ function BlogPreview(props) {
 }
 
 BlogPreview.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-      publishedAt: PropTypes.string.isRequired,
-      mainImage: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-      author: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        avatar: PropTypes.shape({
-          url: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-      body: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  routes: PropTypes.object.isRequired,
+  posts: postsType,
+  routes: routesType,
 };
 
 export default BlogPreview;

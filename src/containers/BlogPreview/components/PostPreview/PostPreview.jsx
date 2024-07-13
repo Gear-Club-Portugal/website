@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -9,12 +8,14 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
+import { postType } from '~/types';
+
 const textFromHtml = (body) => {
   const div = document.createElement('div');
   div.innerHTML = body;
 
   return div.textContent || div.innerText || '';
-};
+}; // todo move to hooks
 
 function PostPreview(props) {
   const { post } = props;
@@ -46,24 +47,6 @@ function PostPreview(props) {
   );
 }
 
-PostPreview.propTypes = {
-  post: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    publishedAt: PropTypes.string.isRequired,
-    mainImage: PropTypes.shape({
-      fileName: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }).isRequired,
-    author: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-    body: PropTypes.string.isRequired,
-  }),
-};
+PostPreview.propTypes = { post: postType };
 
 export default PostPreview;

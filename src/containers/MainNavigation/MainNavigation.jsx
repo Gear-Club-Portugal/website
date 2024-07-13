@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+
+import { langType, routesType } from '~/types';
 
 import GCPLogo from '~/components/GCPLogo';
 import IconButton from '~/components/IconButton';
@@ -15,7 +16,7 @@ import Container from '@mui/material/Container';
 
 function MainNavigation(props) {
   const { lang, routes } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const pages = [routes.lisbonMeetsFetish, routes.events, routes.blog, routes.members, routes.aboutGcp];
 
@@ -45,8 +46,8 @@ function MainNavigation(props) {
 }
 
 MainNavigation.propTypes = {
-  lang: PropTypes.string.isRequired,
-  routes: PropTypes.object.isRequired,
+  lang: langType,
+  routes: routesType,
 };
 
 export default MainNavigation;

@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import Carousel from 'react-material-ui-carousel';
+
+import { bannerItemsType } from '~/types';
 
 import ImageHero from '~/components/ImageHero';
 
@@ -19,15 +20,6 @@ function BannerHero(props) {
   );
 }
 
-BannerHero.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      subtitle1: PropTypes.string.isRequired,
-      subtitle2: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
+BannerHero.propTypes = { items: bannerItemsType };
 
 export default BannerHero;

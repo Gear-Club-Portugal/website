@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+
+import { routesType } from '~/types';
 
 const ulStyles = {
   listStyleType: 'none',
@@ -30,9 +31,7 @@ function PoliciesSiteMap(props) {
   );
 }
 
-PoliciesSiteMap.propTypes = {
-  routes: PropTypes.object.isRequired,
-};
+PoliciesSiteMap.propTypes = { routes: routesType };
 
 function SiteMap(props) {
   const { routes } = props;
@@ -63,9 +62,7 @@ function SiteMap(props) {
   );
 }
 
-SiteMap.propTypes = {
-  routes: PropTypes.object.isRequired,
-};
+SiteMap.propTypes = { routes: routesType };
 
 export { PoliciesSiteMap };
 export default SiteMap;

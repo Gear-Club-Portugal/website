@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
+
+import { eventType } from '~/types';
 
 import ImageHero from '~/components/ImageHero';
 
@@ -31,19 +32,6 @@ function EventPreview(props) {
   );
 }
 
-EventPreview.propTypes = {
-  event: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    shortName: PropTypes.string,
-    slug: PropTypes.string.isRequired,
-    eventDate: PropTypes.string.isRequired,
-    textualEventDate: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    mainImage: PropTypes.shape({
-      fileName: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }).isRequired,
-  }),
-};
+EventPreview.propTypes = { event: eventType };
 
 export default EventPreview;

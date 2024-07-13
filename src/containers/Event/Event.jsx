@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+
+import { eventType } from '~/types';
 
 import LinkButton from '~/components/LinkButton';
 import Separator from '~/components/Separator';
@@ -71,23 +71,6 @@ function Event(props) {
   );
 }
 
-Event.propTypes = {
-  event: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    shortName: PropTypes.string,
-    slug: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    eventDate: PropTypes.string.isRequired,
-    textualEventDate: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    program: PropTypes.string,
-    packs: PropTypes.string,
-    registerForm: PropTypes.string,
-    mainImage: PropTypes.shape({
-      fileName: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }).isRequired,
-  }),
-};
+Event.propTypes = { event: eventType };
 
 export default Event;

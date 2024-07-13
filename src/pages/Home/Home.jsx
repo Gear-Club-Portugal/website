@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-
 import Box from '@mui/material/Box';
+
+import { bannerItemsType, eventsType, postsType, routesType } from '~/types';
 
 import BannerHero from '~/containers/BannerHero';
 import EventsPreview from '~/containers/EventsPreview';
@@ -29,44 +29,10 @@ function Home(props) {
 }
 
 Home.propTypes = {
-  bannerItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      subtitle1: PropTypes.string.isRequired,
-      subtitle2: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  events: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      eventDate: PropTypes.string.isRequired,
-      mainImage: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-      publishedAt: PropTypes.string.isRequired,
-      mainImage: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-      author: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        avatar: PropTypes.shape({
-          url: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-      body: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  routes: PropTypes.object.isRequired,
+  bannerItems: bannerItemsType,
+  events: eventsType,
+  posts: postsType,
+  routes: routesType,
 };
 
 export default Home;

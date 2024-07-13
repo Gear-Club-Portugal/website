@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-
 import Box from '@mui/material/Box';
+
+import { eventsType, routesType } from '~/types';
 
 import EventsPreview from '~/containers/EventsPreview';
 
@@ -15,18 +15,8 @@ function Events(props) {
 }
 
 Events.propTypes = {
-  events: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      eventDate: PropTypes.string.isRequired,
-      mainImage: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  routes: PropTypes.object.isRequired,
+  events: eventsType,
+  routes: routesType,
 };
 
 export default Events;

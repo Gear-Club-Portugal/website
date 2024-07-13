@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+
+import { eventsType, routesType } from '~/types';
 
 import useNextEvents from '~/hooks/useNextEvents';
 
@@ -39,17 +40,8 @@ function EventsPreview(props) {
 }
 
 EventsPreview.propTypes = {
-  events: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      eventDate: PropTypes.string.isRequired,
-      mainImage: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-    }),
-  ).isRequired,
-  routes: PropTypes.object.isRequired,
+  events: eventsType,
+  routes: routesType,
 };
 
 export default EventsPreview;
