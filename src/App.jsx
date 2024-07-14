@@ -15,6 +15,7 @@ import { routes } from './routes.js';
 import events from './assets/data/events.json';
 import posts from './assets/data/posts.json';
 import config from './config.toml';
+import useOrderEvents from './hooks/useOrderEvents.js';
 
 const supportedLanguages = ['pt', 'en'];
 
@@ -23,7 +24,11 @@ function App() {
   const { i18n, t } = useTranslation();
   const [lang, setLang] = useState('en');
 
-  const localizedPages = routes(t);
+  const currentLisbonMeetsFetish = useOrderEvents(
+    events.events[lang]?.filter((e) => e.type === 'Lisbon Meets Fetish'),
+    true,
+  )[0];
+  const localizedPages = routes(t, { lisbonMeetsFetish: currentLisbonMeetsFetish });
 
   const handleLanguageValidation = (slug) => {
     if (supportedLanguages.includes(slug)) {

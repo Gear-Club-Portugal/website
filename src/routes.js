@@ -1,36 +1,45 @@
-const routes = (t) => ({
-  home: {
-    slug: '',
-    title: 'Home',
-  },
-  lisbonMeetsFetish: {
-    slug: 'lisbon-meets-fetish',
-    title: t('lisbonMeetsFetish'),
-  },
-  events: {
-    slug: 'events',
-    title: t('events'),
-  },
-  blog: {
-    slug: 'blog',
-    title: t('blog'),
-  },
-  members: {
-    slug: 'members',
-    title: t('members'),
-  },
-  aboutGcp: {
-    slug: 'about-gcp',
-    title: t('aboutGcp'),
-  },
-  privacyPolicy: {
-    slug: 'privacy-policy',
-    title: t('privacyPolicy'),
-  },
-  termsOfUse: {
-    slug: 'terms-of-use',
-    title: t('termsOfUse'),
-  },
-});
+const routes = (t, config = {}) => {
+  let r = {};
+
+  if (config?.lisbonMeetsFetish?.slug)
+    r['lisbonMeetsFetish'] = {
+      slug: `events/${config.lisbonMeetsFetish.slug}`,
+      title: t('lisbonMeetsFetish'),
+    };
+
+  r = {
+    ...r,
+    home: {
+      slug: '',
+      title: 'Home',
+    },
+    events: {
+      slug: 'events',
+      title: t('events'),
+    },
+    blog: {
+      slug: 'blog',
+      title: t('blog'),
+    },
+    members: {
+      slug: 'members',
+      title: t('members'),
+    },
+    aboutGcp: {
+      slug: 'about-gcp',
+      title: t('aboutGcp'),
+    },
+    privacyPolicy: {
+      slug: 'privacy-policy',
+      title: t('privacyPolicy'),
+    },
+    termsOfUse: {
+      slug: 'terms-of-use',
+      title: t('termsOfUse'),
+    },
+  };
+
+  return r;
+};
 
 export { routes };

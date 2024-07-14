@@ -37,7 +37,14 @@ function SiteMap(props) {
   const { routes } = props;
   const { t } = useTranslation();
 
-  const pages = [routes.home, routes.lisbonMeetsFetish, routes.events, routes.blog, routes.members, routes.aboutGcp];
+  const pages = [
+    routes.home,
+    routes.lisbonMeetsFetish,
+    routes.events,
+    routes.blog,
+    routes.members,
+    routes.aboutGcp,
+  ].filter((p) => p);
 
   return (
     <Box>

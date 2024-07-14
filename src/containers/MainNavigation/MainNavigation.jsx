@@ -18,7 +18,9 @@ function MainNavigation(props) {
   const { lang, routes } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const pages = [routes.lisbonMeetsFetish, routes.events, routes.blog, routes.members, routes.aboutGcp];
+  const pages = [routes.lisbonMeetsFetish, routes.events, routes.blog, routes.members, routes.aboutGcp].filter(
+    (p) => p,
+  );
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
