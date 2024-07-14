@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 
-import { bannerItemsType, eventsType, postsType, routesType } from '~/types';
+import { bannerItemsType, eventsType, langType, postsType, routesType } from '~/types';
 
 import BannerHero from '~/containers/BannerHero';
 import EventsPreview from '~/containers/EventsPreview';
@@ -9,7 +9,7 @@ import BlogPreview from '~/containers/BlogPreview';
 import Separator from '~/components/Separator';
 
 function Home(props) {
-  const { bannerItems, events, posts, routes } = props;
+  const { bannerItems, events, lang, posts, routes } = props;
 
   return (
     <Box component="main">
@@ -17,7 +17,7 @@ function Home(props) {
 
       <Separator extraSpace />
 
-      <EventsPreview events={events} routes={routes} />
+      <EventsPreview events={events} lang={lang} routes={routes} />
 
       <Separator extraSpace />
 
@@ -31,6 +31,7 @@ function Home(props) {
 Home.propTypes = {
   bannerItems: bannerItemsType,
   events: eventsType,
+  lang: langType,
   posts: postsType,
   routes: routesType,
 };

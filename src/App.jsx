@@ -44,6 +44,7 @@ function App() {
             <Home
               bannerItems={config[lang].banner}
               events={events.events[lang] ?? []}
+              lang={lang}
               posts={posts.posts[lang] ?? []}
               routes={localizedPages}
             />

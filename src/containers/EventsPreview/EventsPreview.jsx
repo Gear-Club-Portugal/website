@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import { eventsType, routesType } from '~/types';
+import { eventsType, langType, routesType } from '~/types';
 
 import useNextEvents from '~/hooks/useNextEvents';
 
@@ -12,7 +12,7 @@ import EventPreview from '~/components/EventPreview';
 import LinkButton from '~/components/LinkButton';
 
 function EventsPreview(props) {
-  const { events, routes } = props;
+  const { events, lang, routes } = props;
   const { t } = useTranslation();
   const previewableEvents = useNextEvents(events, 3);
 
@@ -26,7 +26,7 @@ function EventsPreview(props) {
         {previewableEvents.map((event) => {
           return (
             <Grid key={event.slug} item xs={12} sm={4}>
-              <EventPreview event={event} />
+              <EventPreview event={event} lang={lang} />
             </Grid>
           );
         })}
@@ -41,6 +41,7 @@ function EventsPreview(props) {
 
 EventsPreview.propTypes = {
   events: eventsType,
+  lang: langType,
   routes: routesType,
 };
 
