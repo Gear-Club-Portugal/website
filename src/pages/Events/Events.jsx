@@ -1,22 +1,30 @@
+import { useTranslation } from 'react-i18next';
+
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import { eventsType, routesType } from '~/types';
+import { eventsType, langType } from '~/types';
 
-import EventsPreview from '~/containers/EventsPreview';
+import EventsGrid from '~/containers/EventsGrid';
 
 function Events(props) {
-  const { events, routes } = props;
-
+  const { events, lang } = props;
+  const { t } = useTranslation();
+  console.log('lang', lang);
   return (
     <Box component="main">
-      <EventsPreview events={events} routes={routes} />
+      <Typography variant="h3" sx={{ mb: '15px' }}>
+        {t('events')}
+      </Typography>
+
+      <EventsGrid events={events} lang={lang} />
     </Box>
   );
 }
 
 Events.propTypes = {
   events: eventsType,
-  routes: routesType,
+  lang: langType,
 };
 
 export default Events;

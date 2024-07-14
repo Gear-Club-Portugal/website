@@ -55,7 +55,7 @@ function App() {
         <Route path={`${localizedPages.events.slug}/:slug`} element={<Event events={events.events[lang] ?? []} />} />
         <Route
           path={`${localizedPages.events.slug}`}
-          element={<Events events={events.events[lang] ?? []} routes={localizedPages} />}
+          element={<Events events={events.events[lang] ?? []} lang={lang} />}
         />
 
         <Route path="*" element={<NotFound />} />

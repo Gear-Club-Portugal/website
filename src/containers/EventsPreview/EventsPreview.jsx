@@ -8,7 +8,7 @@ import { eventsType, routesType } from '~/types';
 
 import useNextEvents from '~/hooks/useNextEvents';
 
-import EventPreview from './components/EventPreview';
+import EventPreview from '~/components/EventPreview';
 import LinkButton from '~/components/LinkButton';
 
 function EventsPreview(props) {

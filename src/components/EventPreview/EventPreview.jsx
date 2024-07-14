@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 
-import { eventType } from '~/types';
+import { eventType, langType } from '~/types';
 
 import ImageHero from '~/components/ImageHero';
 
 function EventPreview(props) {
-  const { event } = props;
+  const { event, lang } = props;
 
   return (
     <Card sx={{ borderRadius: 0, backgroundColor: '#ffffff', color: '#000000', height: '100%' }}>
       <CardActionArea
         component={Link}
-        to={`events/${event.slug}`}
+        to={`/${lang}/events/${event.slug}`}
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         <ImageHero
@@ -32,6 +32,6 @@ function EventPreview(props) {
   );
 }
 
-EventPreview.propTypes = { event: eventType };
+EventPreview.propTypes = { event: eventType, lang: langType };
 
 export default EventPreview;
