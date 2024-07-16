@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Container from '@mui/material/Container';
+import LinearProgress from '@mui/material/LinearProgress';
 import Toolbar from '@mui/material/Toolbar';
 
 import MainNavigation from './containers/MainNavigation';
@@ -21,7 +22,9 @@ function Layout(props) {
       <MainNavigation lang={lang} routes={routes} />
       <Toolbar sx={{ height: '80px' }} />
 
-      <Outlet />
+      <Suspense fallback={<LinearProgress sx={{position: 'absolute', left: 0, right: 0, top: '80px'}} />}>
+        <Outlet />
+      </Suspense>
 
       <Footer routes={routes} />
     </Container>

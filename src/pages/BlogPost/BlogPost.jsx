@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
-import BlogPost from '~/containers/BlogPost';
+import BlogPostContainer from '~/containers/BlogPost';
 
 import Separator from '~/components/Separator';
 
 import { postsType } from '~/types';
 
-function Post(props) {
+function BlogPost(props) {
   const { posts } = props;
   const { slug } = useParams();
   const [post, setPost] = useState();
@@ -21,13 +21,13 @@ function Post(props) {
 
   return (
     <Box component="main">
-      {post ? <BlogPost post={post} /> : <Box />}
+      {post ? <BlogPostContainer post={post} /> : <Box />}
 
       <Separator extraSpace />
     </Box>
   );
 }
 
-Post.propTypes = { posts: postsType };
+BlogPost.propTypes = { posts: postsType };
 
-export default Post;
+export default BlogPost;

@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import Layout from './Layout.jsx';
 
-import Home from './pages/Home';
-import Post from './pages/Post';
-import Event from './pages/Event';
-import Events from './pages/Events';
-import NotFound from './pages/NotFound';
+const Home = lazy(() => import('./pages/Home'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const Event = lazy(() => import('./pages/Event'));
+const Events = lazy(() => import('./pages/Events'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 import { routes } from './routes.js';
 
@@ -56,7 +56,7 @@ function App() {
           }
         />
 
-        <Route path={`${localizedPages.blog.slug}/:slug`} element={<Post posts={posts.posts[lang] ?? []} />} />
+        <Route path={`${localizedPages.blog.slug}/:slug`} element={<BlogPost posts={posts.posts[lang] ?? []} />} />
 
         <Route path={`${localizedPages.events.slug}/:slug`} element={<Event events={events.events[lang] ?? []} />} />
         <Route
