@@ -11,6 +11,13 @@ export const langType = string.isRequired;
 
 // ==========================================================================
 
+export const authorType = shape({
+  name: string.isRequired,
+  avatar: shape({
+    url: string.isRequired,
+  }).isRequired,
+});
+
 export const bannerItemType = shape({
   title: string.isRequired,
   subtitle1: string.isRequired,
@@ -53,12 +60,7 @@ export const postType = shape({
   category: string.isRequired,
   publishedAt: string.isRequired,
   mainImage: imageType,
-  author: shape({
-    name: string.isRequired,
-    avatar: shape({
-      url: string.isRequired,
-    }).isRequired,
-  }).isRequired,
+  author: authorType.isRequired,
   body: string.isRequired,
 });
 

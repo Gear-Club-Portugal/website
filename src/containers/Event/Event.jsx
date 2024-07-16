@@ -5,10 +5,10 @@ import Grid from '@mui/material/Grid';
 
 import { eventType } from '~/types';
 
+import ContainedImage from '~/components/ContainedImage';
 import LinkButton from '~/components/LinkButton';
 import Separator from '~/components/Separator';
 
-import ContainedImage from './components/ContainedImage';
 import EventDetails from './components/EventDetails';
 
 import useWysiwygParser from '~/hooks/useWysiwygParser.jsx';

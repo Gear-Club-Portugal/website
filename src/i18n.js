@@ -47,7 +47,7 @@ const resources = {
       moreBlogs: 'Mais Blogs',
       enrollmentForm: 'Ficha de Inscriçao',
       addToCalendar: 'Adicionar ao Calendário',
-      program: 'Program',
+      program: 'Programa',
       packs: 'Pacotes',
     },
   },
