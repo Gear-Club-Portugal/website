@@ -47,7 +47,7 @@ function ArticleHeader(props) {
 
 ArticleHeader.propTypes = {
   author: authorType.isRequired,
-  category: authorType.isRequired,
+  category: PropTypes.string.isRequired,
   publishedAt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

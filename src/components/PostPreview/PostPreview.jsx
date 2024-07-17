@@ -8,30 +8,26 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import { postType } from '~/types';
+import useTextFromHtml from '~/hooks/useTextFromHtml';
 
-const textFromHtml = (body) => {
-  const div = document.createElement('div');
-  div.innerHTML = body;
-
-  return div.textContent || div.innerText || '';
-}; // todo move to hooks
+import { postType, langType } from '~/types';
 
 function PostPreview(props) {
-  const { post } = props;
+  const { post, lang } = props;
+  const bodyText = useTextFromHtml(post.body);
 
   return (
     <Card sx={{ borderRadius: 0, backgroundColor: '#ffffff', color: '#000000', height: '100%' }}>
       <CardActionArea
         component={Link}
-        to={`blog/${post.slug}`}
+        to={`/${lang}/blog/${post.slug}`}
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         <CardMedia component="img" height="200" image={post.mainImage.url} alt={post.mainImage.fileName} />
 
         <CardContent sx={{ flexGrow: 1, width: '100%' }}>
           <Typography variant="h5">{post.title}</Typography>
-          <Typography sx={{ mt: '4px' }}>{textFromHtml(post.body).substring(0, 128)}...</Typography>
+          <Typography sx={{ mt: '4px' }}>{bodyText.substring(0, 128)}...</Typography>
         </CardContent>
 
         <CardHeader
@@ -47,6 +43,6 @@ function PostPreview(props) {
   );
 }
 
-PostPreview.propTypes = { post: postType };
+PostPreview.propTypes = { post: postType, lang: langType };
 
 export default PostPreview;

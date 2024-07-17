@@ -21,7 +21,7 @@ function Home(props) {
 
       <Separator extraSpace />
 
-      <BlogPreview posts={posts} routes={routes} />
+      <BlogPreview posts={posts} routes={routes} lang={lang} />
 
       <Separator extraSpace />
     </Box>

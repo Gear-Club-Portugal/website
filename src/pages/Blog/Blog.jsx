@@ -3,28 +3,25 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import { eventsType, langType } from '~/types';
+import BlogPostGrid from '~/containers/BlogPostGrid';
 
-import EventsGrid from '~/containers/EventsGrid';
+import { postsType, langType } from '~/types';
 
-function Events(props) {
-  const { events, lang } = props;
+function Blog(props) {
+  const { posts, lang } = props;
   const { t } = useTranslation();
 
   return (
     <Box component="main">
       <Typography variant="h3" sx={{ mb: '15px', mt: '40px' }}>
-        {t('events')}
+        {t('blog')}
       </Typography>
 
-      <EventsGrid events={events} lang={lang} />
+      <BlogPostGrid posts={posts} lang={lang} />
     </Box>
   );
 }
 
-Events.propTypes = {
-  events: eventsType,
-  lang: langType,
-};
+Blog.propTypes = { posts: postsType, lang: langType };
 
-export default Events;
+export default Blog;

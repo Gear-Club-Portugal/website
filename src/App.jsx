@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Layout from './Layout.jsx';
 
 const Home = lazy(() => import('./pages/Home'));
+const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Event = lazy(() => import('./pages/Event'));
 const Events = lazy(() => import('./pages/Events'));
@@ -57,6 +58,7 @@ function App() {
         />
 
         <Route path={`${localizedPages.blog.slug}/:slug`} element={<BlogPost posts={posts.posts[lang] ?? []} />} />
+        <Route path={`${localizedPages.blog.slug}`} element={<Blog posts={posts.posts[lang] ?? []} lang={lang} />} />
 
         <Route path={`${localizedPages.events.slug}/:slug`} element={<Event events={events.events[lang] ?? []} />} />
         <Route

@@ -4,13 +4,13 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import { postsType, routesType } from '~/types';
+import { postsType, routesType, langType } from '~/types';
 
-import PostPreview from './components/PostPreview';
+import PostPreview from '~/components/PostPreview';
 import LinkButton from '~/components/LinkButton';
 
 function BlogPreview(props) {
-  const { posts, routes } = props;
+  const { posts, routes, lang } = props;
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,7 @@ function BlogPreview(props) {
         {posts.map((post) => {
           return (
             <Grid key={post.slug} item xs={12} sm={4}>
-              <PostPreview post={post} />
+              <PostPreview post={post} lang={lang} />
             </Grid>
           );
         })}
@@ -39,6 +39,7 @@ function BlogPreview(props) {
 BlogPreview.propTypes = {
   posts: postsType,
   routes: routesType,
+  lang: langType,
 };
 
 export default BlogPreview;

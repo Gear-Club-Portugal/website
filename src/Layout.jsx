@@ -22,7 +22,7 @@ function Layout(props) {
       <MainNavigation lang={lang} routes={routes} />
       <Toolbar sx={{ height: '80px' }} />
 
-      <Suspense fallback={<LinearProgress sx={{position: 'absolute', left: 0, right: 0, top: '80px'}} />}>
+      <Suspense fallback={<LinearProgress sx={{ position: 'absolute', left: 0, right: 0, top: '80px' }} />}>
         <Outlet />
       </Suspense>
 

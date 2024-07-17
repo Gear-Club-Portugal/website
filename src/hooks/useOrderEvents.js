@@ -1,8 +1,9 @@
-const useOrderEvents = (events, invert = false) => {
-  let sortedEvents = [...events].sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
-  if (invert) sortedEvents = sortedEvents.reverse();
+const useOrderPosts = (posts, invert = false) => {
+  let sortedPosts = [...posts].sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+  if (invert) sortedPosts = sortedPosts.reverse();
 
-  return sortedEvents;
+  return sortedPosts;
 };
 
-export default useOrderEvents;
+export default useOrderPosts;
+``;
