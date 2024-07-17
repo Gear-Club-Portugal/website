@@ -7,6 +7,8 @@ import { eventsType, langType } from '~/types';
 
 import EventsGrid from '~/containers/EventsGrid';
 
+import Separator from '~/components/Separator';
+
 function Events(props) {
   const { events, lang } = props;
   const { t } = useTranslation();
@@ -18,6 +20,8 @@ function Events(props) {
       </Typography>
 
       <EventsGrid events={events} lang={lang} />
+
+      <Separator extraSpace />
     </Box>
   );
 }

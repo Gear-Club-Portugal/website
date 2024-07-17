@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 
 import BlogPostGrid from '~/containers/BlogPostGrid';
 
+import Separator from '~/components/Separator';
+
 import { postsType, langType } from '~/types';
 
 function Blog(props) {
@@ -18,6 +20,8 @@ function Blog(props) {
       </Typography>
 
       <BlogPostGrid posts={posts} lang={lang} />
+
+      <Separator extraSpace />
     </Box>
   );
 }
