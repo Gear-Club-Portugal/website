@@ -21,7 +21,7 @@ function BlogPostGrid(props) {
   const query = new URLSearchParams(location.search);
   const page = Math.min(Math.max(parseInt(query.get('page') || '1', 10), 1), pages);
 
-  const sortedPosts = useOrderPosts(posts, true);
+  const sortedPosts = useOrderPosts(posts);
   const pagePosts = useArrayChunk(sortedPosts, itemsPerPage);
 
   return (
