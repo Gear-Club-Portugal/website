@@ -102,6 +102,36 @@ const handleEnventsUpdate = (entries) => {
   fileWritter({ contentType, content: data });
 };
 
+const handleBannersUpdate = (entries) => {
+  const { items } = entries;
+  const contentType = 'banners';
+  const data = { [contentType]: { [LOCALE_PT]: [], [LOCALE_EN]: [] } };
+
+  items.map((item) => {
+    const { fields } = item;
+    const { title, subtitle1, subtitle2 } = fields;
+    const slug = Object.values(fields.slug)[0];
+    const image = Object.values(Object.values(fields.image)[0].fields.file)[0];
+
+    const itemData = { slug, image };
+
+    data[contentType][LOCALE_PT].push({
+      ...itemData,
+      title: title[CONFLUENT_LOCALE_PT],
+      subtitle1: subtitle1[CONFLUENT_LOCALE_PT],
+      subtitle2: subtitle2[CONFLUENT_LOCALE_PT],
+    });
+    data[contentType][LOCALE_EN].push({
+      ...itemData,
+      title: title[CONFLUENT_LOCALE_EN],
+      subtitle1: subtitle1[CONFLUENT_LOCALE_EN],
+      subtitle2: subtitle2[CONFLUENT_LOCALE_EN],
+    });
+  });
+
+  fileWritter({ contentType, content: data });
+};
+
 client.withAllLocales
   .getEntries({ content_type: 'post', order: '-fields.publishedAt' })
   .then((entries) => handlePostsUpdate(entries))
@@ -110,4 +140,9 @@ client.withAllLocales
 client.withAllLocales
   .getEntries({ content_type: 'event', order: '-fields.eventDate' })
   .then((entries) => handleEnventsUpdate(entries))
+  .catch((error) => console.error(error));
+
+client.withAllLocales
+  .getEntries({ content_type: 'banner' })
+  .then((entries) => handleBannersUpdate(entries))
   .catch((error) => console.error(error));

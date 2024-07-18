@@ -5,7 +5,7 @@ const { shape, string, arrayOf, object } = PropTypes;
 export const imageType = shape({
   url: string.isRequired,
   fileName: string.isRequired,
-}).isRequired;
+});
 
 export const langType = string.isRequired;
 
@@ -18,15 +18,6 @@ export const authorType = shape({
   }).isRequired,
 });
 
-export const bannerItemType = shape({
-  title: string.isRequired,
-  subtitle1: string.isRequired,
-  subtitle2: string.isRequired,
-  image: string.isRequired, // todo standerize
-}).isRequired;
-
-export const bannerItemsType = arrayOf(bannerItemType).isRequired;
-
 export const pageType = shape({
   slug: string.isRequired,
   title: string.isRequired,
@@ -37,6 +28,16 @@ export const pagesType = arrayOf(pageType).isRequired;
 export const routesType = object.isRequired; // todo improve
 
 // ==========================================================================
+
+export const bannerItemType = shape({
+  title: string.isRequired,
+  slug: string.isRequired,
+  subtitle1: string.isRequired,
+  subtitle2: string.isRequired,
+  image: imageType.isRequired,
+}).isRequired;
+
+export const bannerItemsType = arrayOf(bannerItemType).isRequired;
 
 export const eventType = shape({
   name: string.isRequired,

@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next';
 
 import Layout from './Layout.jsx';
 
+import { routes } from './routes.js';
+import useOrderEvents from './hooks/useOrderEvents.js';
+
 const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
@@ -11,12 +14,9 @@ const Event = lazy(() => import('./pages/Event'));
 const Events = lazy(() => import('./pages/Events'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-import { routes } from './routes.js';
-
+import banners from './assets/data/banners.json';
 import events from './assets/data/events.json';
 import posts from './assets/data/posts.json';
-import config from './config.toml';
-import useOrderEvents from './hooks/useOrderEvents.js';
 
 const supportedLanguages = ['pt', 'en'];
 
@@ -48,7 +48,7 @@ function App() {
           index
           element={
             <Home
-              bannerItems={config[lang].banner}
+              bannerItems={banners.banners[lang] ?? []}
               events={events.events[lang] ?? []}
               lang={lang}
               posts={posts.posts[lang] ?? []}
