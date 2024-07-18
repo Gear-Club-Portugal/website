@@ -9,6 +9,8 @@ import '@fontsource/oswald/400.css';
 import '@fontsource/oswald/500.css';
 import '@fontsource/oswald/700.css';
 
+import './main.css';
+
 import { theme } from './theme.js';
 import './i18n';
 
