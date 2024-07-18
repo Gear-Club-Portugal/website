@@ -18,6 +18,12 @@ export const authorType = shape({
   }).isRequired,
 });
 
+export const pageBodyType = {
+  title: string.isRequired,
+  body: string.isRequired,
+  image: imageType.isRequired,
+};
+
 export const pageType = shape({
   slug: string.isRequired,
   title: string.isRequired,

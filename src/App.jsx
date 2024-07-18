@@ -12,10 +12,12 @@ const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Event = lazy(() => import('./pages/Event'));
 const Events = lazy(() => import('./pages/Events'));
+const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 import banners from './assets/data/banners.json';
 import events from './assets/data/events.json';
+import pages from './assets/data/pages.json';
 import posts from './assets/data/posts.json';
 
 const supportedLanguages = ['pt', 'en'];
@@ -24,6 +26,8 @@ function App() {
   const navigate = useNavigate();
   const { i18n, t } = useTranslation();
   const [lang, setLang] = useState('en');
+
+  const aboutPageData = pages.pages[lang].filter((page) => page.slug === 'about-gcp')[0];
 
   const currentLisbonMeetsFetish = useOrderEvents(
     events.events[lang]?.filter((e) => e.type === 'Lisbon Meets Fetish'),
@@ -65,6 +69,15 @@ function App() {
           path={`${localizedPages.events.slug}`}
           element={<Events events={events.events[lang] ?? []} lang={lang} />}
         />
+
+        {aboutPageData && (
+          <Route
+            path={`${localizedPages.aboutGcp.slug}`}
+            element={
+              <About pageData={{ ...aboutPageData, title: aboutPageData.name, image: aboutPageData.mainImage }} />
+            }
+          />
+        )}
 
         <Route path="*" element={<NotFound />} />
       </Route>

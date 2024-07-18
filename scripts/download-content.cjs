@@ -21,6 +21,10 @@ const fileWritter = ({ contentType, content }) => {
 };
 
 const objectValueOrNull = (object, key) => (typeof object === 'object' ? object[key] : null);
+
+const objectValueImageOrNull = (object) =>
+  typeof object === 'object' ? Object.values(Object.values(object)[0].fields.file)[0] : null;
+
 const objectValueRichTextOrNull = (object, key) =>
   typeof object === 'object' ? richTextRenderer.documentToHtmlString(object[key]) : null;
 
@@ -132,6 +136,34 @@ const handleBannersUpdate = (entries) => {
   fileWritter({ contentType, content: data });
 };
 
+const handlePagesUpdate = (entries) => {
+  const { items } = entries;
+  const contentType = 'pages';
+  const data = { [contentType]: { [LOCALE_PT]: [], [LOCALE_EN]: [] } };
+
+  items.map((item) => {
+    const { fields } = item;
+    const { name, body } = fields;
+    const slug = Object.values(fields.slug)[0];
+    const mainImage = objectValueImageOrNull(fields.mainImage);
+
+    const itemData = { slug, mainImage };
+
+    data[contentType][LOCALE_PT].push({
+      ...itemData,
+      name: name[CONFLUENT_LOCALE_PT],
+      body: richTextRenderer.documentToHtmlString(body[CONFLUENT_LOCALE_PT]),
+    });
+    data[contentType][LOCALE_EN].push({
+      ...itemData,
+      name: name[CONFLUENT_LOCALE_EN],
+      body: richTextRenderer.documentToHtmlString(body[CONFLUENT_LOCALE_EN]),
+    });
+  });
+
+  fileWritter({ contentType, content: data });
+};
+
 client.withAllLocales
   .getEntries({ content_type: 'post', order: '-fields.publishedAt' })
   .then((entries) => handlePostsUpdate(entries))
@@ -145,4 +177,9 @@ client.withAllLocales
 client.withAllLocales
   .getEntries({ content_type: 'banner' })
   .then((entries) => handleBannersUpdate(entries))
+  .catch((error) => console.error(error));
+
+client.withAllLocales
+  .getEntries({ content_type: 'page' })
+  .then((entries) => handlePagesUpdate(entries))
   .catch((error) => console.error(error));
