@@ -12,6 +12,7 @@ const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Event = lazy(() => import('./pages/Event'));
 const Events = lazy(() => import('./pages/Events'));
+const Members = lazy(() => import('./pages/Members'));
 const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -28,6 +29,7 @@ function App() {
   const [lang, setLang] = useState('en');
 
   const aboutPageData = pages.pages[lang].filter((page) => page.slug === 'about-gcp')[0];
+  const membersPageData = pages.pages[lang].filter((page) => page.slug === 'members')[0];
 
   const currentLisbonMeetsFetish = useOrderEvents(
     events.events[lang]?.filter((e) => e.type === 'Lisbon Meets Fetish'),
@@ -69,6 +71,17 @@ function App() {
           path={`${localizedPages.events.slug}`}
           element={<Events events={events.events[lang] ?? []} lang={lang} />}
         />
+
+        {membersPageData && (
+          <Route
+            path={`${localizedPages.members.slug}`}
+            element={
+              <Members
+                pageData={{ ...membersPageData, title: membersPageData.name, image: membersPageData.mainImage }}
+              />
+            }
+          />
+        )}
 
         {aboutPageData && (
           <Route
