@@ -28,6 +28,14 @@ const objectValueImageOrNull = (object) =>
 const objectValueRichTextOrNull = (object, key) =>
   typeof object === 'object' ? richTextRenderer.documentToHtmlString(object[key]) : null;
 
+const objectValueLinks = (object, key) =>
+  typeof object === 'object'
+    ? object[key].map((entry) => {
+        const linkRaw = entry.split('@');
+        return { text: linkRaw[0], href: linkRaw[1] };
+      })
+    : [];
+
 const handlePostsUpdate = (entries) => {
   const { items } = entries;
   const contentType = 'posts';
@@ -143,7 +151,7 @@ const handlePagesUpdate = (entries) => {
 
   items.map((item) => {
     const { fields } = item;
-    const { name, body } = fields;
+    const { name, body, links } = fields;
     const slug = Object.values(fields.slug)[0];
     const mainImage = objectValueImageOrNull(fields.mainImage);
 
@@ -153,11 +161,13 @@ const handlePagesUpdate = (entries) => {
       ...itemData,
       name: name[CONFLUENT_LOCALE_PT],
       body: richTextRenderer.documentToHtmlString(body[CONFLUENT_LOCALE_PT]),
+      links: objectValueLinks(links, CONFLUENT_LOCALE_PT),
     });
     data[contentType][LOCALE_EN].push({
       ...itemData,
       name: name[CONFLUENT_LOCALE_EN],
       body: richTextRenderer.documentToHtmlString(body[CONFLUENT_LOCALE_EN]),
+      links: objectValueLinks(links, CONFLUENT_LOCALE_EN),
     });
   });
 

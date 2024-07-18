@@ -7,7 +7,7 @@ import { pageBodyType } from '~/types';
 function Members(props) {
   const { pageData } = props;
 
-  return <PageBody title={pageData.title} body={pageData.body} image={pageData.image} />;
+  return <PageBody title={pageData.title} body={pageData.body} image={pageData.image} links={pageData.links} />;
 }
 
 Members.propTypes = {

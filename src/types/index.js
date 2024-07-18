@@ -22,6 +22,12 @@ export const pageBodyType = {
   title: string.isRequired,
   body: string.isRequired,
   image: imageType.isRequired,
+  links: arrayOf(
+    shape({
+      text: string.isRequired,
+      href: string.isRequired,
+    }),
+  ),
 };
 
 export const pageType = shape({

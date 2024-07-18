@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import ContainedImage from '~/components/ContainedImage';
+import LinkButton from '~/components/LinkButton';
 import Separator from '~/components/Separator';
 
 import useWysiwygParser from '~/hooks/useWysiwygParser.jsx';
@@ -12,7 +13,7 @@ import { pageBodyType } from '~/types';
 const pageStyles = { py: '32px', px: { xs: 0, sm: '16px' }, mt: { xs: 0, sm: '40px' } };
 
 function PageBody(props) {
-  const { title, body, image } = props;
+  const { title, body, image, links } = props;
   const parsedBody = useWysiwygParser(body);
 
   return (
@@ -28,6 +29,12 @@ function PageBody(props) {
           </Typography>
 
           <Box sx={{ 'p.MuiTypography-root': { margin: 'revert' } }}>{parsedBody}</Box>
+
+          {links.map((link) => (
+            <Box key={link.href} sx={{ my: '8px' }}>
+              <LinkButton external link={link.href} text={link.text} />
+            </Box>
+          ))}
         </Grid>
       </Grid>
 
