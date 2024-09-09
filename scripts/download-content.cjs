@@ -87,7 +87,14 @@ const handleEnventsUpdate = (entries) => {
     const mainImage = Object.values(Object.values(fields.mainImage)[0].fields.file)[0];
     const registerForm = Object.values(fields.registerForm || {})[0];
 
-    const itemData = { slug, type, eventDate, mainImage, registerForm };
+    const sponsorsRaw = Object.values(fields.sponsors || {}).flat();
+    const sponsors = sponsorsRaw.map((s) => ({
+      name: Object.values(s.fields.name)[0],
+      type: Object.values(s.fields.type)[0],
+      logo: Object.values(Object.values(s.fields.logo)[0].fields.file)[0],
+    }));
+
+    const itemData = { slug, type, eventDate, mainImage, registerForm, sponsors };
 
     data[contentType][LOCALE_PT].push({
       ...itemData,
@@ -174,6 +181,44 @@ const handlePagesUpdate = (entries) => {
   fileWritter({ contentType, content: data });
 };
 
+const handleAwardsUpdate = (entries) => {
+  const { items } = entries;
+  const contentType = 'awards';
+  const data = { [contentType]: { [LOCALE_PT]: [], [LOCALE_EN]: [] } };
+
+  items.map((item) => {
+    const { fields } = item;
+    const { title, subtitle, description } = fields;
+    const votingForm = Object.values(fields?.votingForm || {})[0];
+
+    const nominiesRaw = Object.values(fields.nominies || {}).flat();
+    const nominies = nominiesRaw.map((s) => ({
+      name: Object.values(s.fields.name)[0],
+      description: s.fields.description,
+      logo: Object.values(Object.values(s.fields.logo)[0].fields.file)[0],
+    }));
+
+    const itemData = { votingForm };
+
+    data[contentType][LOCALE_PT].push({
+      ...itemData,
+      title: title[CONFLUENT_LOCALE_PT],
+      subtitle: subtitle[CONFLUENT_LOCALE_PT],
+      description: description[CONFLUENT_LOCALE_PT],
+      nominies: nominies.map((nominie) => ({ ...nominie, description: nominie.description[CONFLUENT_LOCALE_PT] })),
+    });
+    data[contentType][LOCALE_EN].push({
+      ...itemData,
+      title: title[CONFLUENT_LOCALE_EN],
+      subtitle: subtitle[CONFLUENT_LOCALE_EN],
+      description: description[CONFLUENT_LOCALE_EN],
+      nominies: nominies.map((nominie) => ({ ...nominie, description: nominie.description[CONFLUENT_LOCALE_EN] })),
+    });
+  });
+
+  fileWritter({ contentType, content: data });
+};
+
 client.withAllLocales
   .getEntries({ content_type: 'post', order: '-fields.publishedAt' })
   .then((entries) => handlePostsUpdate(entries))
@@ -192,4 +237,9 @@ client.withAllLocales
 client.withAllLocales
   .getEntries({ content_type: 'page' })
   .then((entries) => handlePagesUpdate(entries))
+  .catch((error) => console.error(error));
+
+client.withAllLocales
+  .getEntries({ content_type: 'award' })
+  .then((entries) => handleAwardsUpdate(entries))
   .catch((error) => console.error(error));

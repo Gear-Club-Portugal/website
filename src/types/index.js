@@ -37,6 +37,11 @@ export const pageType = shape({
 
 export const pagesType = arrayOf(pageType).isRequired;
 
+export const policyPageType = shape({
+  name: string.isRequired,
+  body: string.isRequired,
+});
+
 export const routesType = object.isRequired; // todo improve
 
 // ==========================================================================

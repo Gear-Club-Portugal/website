@@ -14,6 +14,7 @@ const Event = lazy(() => import('./pages/Event'));
 const Events = lazy(() => import('./pages/Events'));
 const Members = lazy(() => import('./pages/Members'));
 const About = lazy(() => import('./pages/About'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 import banners from './assets/data/banners.json';
@@ -30,6 +31,7 @@ function App() {
 
   const aboutPageData = pages.pages[lang].filter((page) => page.slug === 'about-gcp')[0];
   const membersPageData = pages.pages[lang].filter((page) => page.slug === 'members')[0];
+  const privacyPolicyPageData = pages.pages[lang].filter((page) => page.slug === 'privacy-policy')[0];
 
   const currentLisbonMeetsFetish = useOrderEvents(
     events.events[lang]?.filter((e) => e.type === 'Lisbon Meets Fetish'),
@@ -64,17 +66,14 @@ function App() {
         />
 
         <Route path={`${localizedPages.blog.slug}/:slug`} element={<BlogPost posts={posts.posts[lang] ?? []} />} />
-        <Route path={`${localizedPages.blog.slug}`} element={<Blog posts={posts.posts[lang] ?? []} lang={lang} />} />
+        <Route path={localizedPages.blog.slug} element={<Blog posts={posts.posts[lang] ?? []} lang={lang} />} />
 
         <Route path={`${localizedPages.events.slug}/:slug`} element={<Event events={events.events[lang] ?? []} />} />
-        <Route
-          path={`${localizedPages.events.slug}`}
-          element={<Events events={events.events[lang] ?? []} lang={lang} />}
-        />
+        <Route path={localizedPages.events.slug} element={<Events events={events.events[lang] ?? []} lang={lang} />} />
 
         {membersPageData && (
           <Route
-            path={`${localizedPages.members.slug}`}
+            path={localizedPages.members.slug}
             element={
               <Members
                 pageData={{ ...membersPageData, title: membersPageData.name, image: membersPageData.mainImage }}
@@ -85,12 +84,17 @@ function App() {
 
         {aboutPageData && (
           <Route
-            path={`${localizedPages.aboutGcp.slug}`}
+            path={localizedPages.aboutGcp.slug}
             element={
               <About pageData={{ ...aboutPageData, title: aboutPageData.name, image: aboutPageData.mainImage }} />
             }
           />
         )}
+
+        <Route
+          path={localizedPages.privacyPolicy.slug}
+          element={<PrivacyPolicy policyData={privacyPolicyPageData} />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Route>
