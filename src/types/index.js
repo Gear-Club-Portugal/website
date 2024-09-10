@@ -21,6 +21,7 @@ export const authorType = shape({
 export const pageBodyType = {
   title: string.isRequired,
   body: string.isRequired,
+  children: object,
   image: imageType.isRequired,
   links: arrayOf(
     shape({
@@ -83,3 +84,21 @@ export const postType = shape({
 });
 
 export const postsType = arrayOf(postType).isRequired;
+
+export const nominieeType = {
+  name: string.isRequired,
+  description: string.isRequired,
+  logo: imageType.isRequired,
+};
+
+export const awardCategoryType = {
+  title: string.isRequired,
+  subtitle: string.isRequired,
+  description: string.isRequired,
+  votingForm: string,
+  nominiees: arrayOf(shape(nominieeType)).isRequired,
+};
+
+export const awardCategoriesType = {
+  categories: arrayOf(shape(awardCategoryType)).isRequired,
+};

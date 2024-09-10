@@ -40,6 +40,7 @@ function SiteMap(props) {
   const pages = [
     routes.home,
     routes.lisbonMeetsFetish,
+    routes.gcpAwards,
     routes.events,
     routes.blog,
     routes.members,

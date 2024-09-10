@@ -12,6 +12,7 @@ const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Event = lazy(() => import('./pages/Event'));
 const Events = lazy(() => import('./pages/Events'));
+const GcpAwards = lazy(() => import('./pages/GcpAwards'));
 const Members = lazy(() => import('./pages/Members'));
 const About = lazy(() => import('./pages/About'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
@@ -21,6 +22,7 @@ import banners from './assets/data/banners.json';
 import events from './assets/data/events.json';
 import pages from './assets/data/pages.json';
 import posts from './assets/data/posts.json';
+import awards from './assets/data/awards.json';
 
 const supportedLanguages = ['pt', 'en'];
 
@@ -29,8 +31,9 @@ function App() {
   const { i18n, t } = useTranslation();
   const [lang, setLang] = useState('en');
 
-  const aboutPageData = pages.pages[lang].filter((page) => page.slug === 'about-gcp')[0];
+  const gcpAwardsPageData = pages.pages[lang].filter((page) => page.slug === 'gcp-awards')[0];
   const membersPageData = pages.pages[lang].filter((page) => page.slug === 'members')[0];
+  const aboutPageData = pages.pages[lang].filter((page) => page.slug === 'about-gcp')[0];
   const privacyPolicyPageData = pages.pages[lang].filter((page) => page.slug === 'privacy-policy')[0];
 
   const currentLisbonMeetsFetish = useOrderEvents(
@@ -70,6 +73,18 @@ function App() {
 
         <Route path={`${localizedPages.events.slug}/:slug`} element={<Event events={events.events[lang] ?? []} />} />
         <Route path={localizedPages.events.slug} element={<Events events={events.events[lang] ?? []} lang={lang} />} />
+
+        {gcpAwardsPageData && (
+          <Route
+            path={localizedPages.gcpAwards.slug}
+            element={
+              <GcpAwards
+                pageData={{ ...gcpAwardsPageData, title: gcpAwardsPageData.name, image: gcpAwardsPageData.mainImage }}
+                awardCategories={awards.awards[lang] ?? []}
+              />
+            }
+          />
+        )}
 
         {membersPageData && (
           <Route

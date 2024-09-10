@@ -240,6 +240,6 @@ client.withAllLocales
   .catch((error) => console.error(error));
 
 client.withAllLocales
-  .getEntries({ content_type: 'award' })
+  .getEntries({ content_type: 'award', order: 'fields.order' })
   .then((entries) => handleAwardsUpdate(entries))
   .catch((error) => console.error(error));

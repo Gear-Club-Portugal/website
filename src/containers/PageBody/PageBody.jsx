@@ -13,7 +13,7 @@ import { pageBodyType } from '~/types';
 const pageStyles = { py: '32px', px: { xs: 0, sm: '16px' }, mt: { xs: 0, sm: '40px' } };
 
 function PageBody(props) {
-  const { title, body, image, links } = props;
+  const { title, body, image, links, children } = props;
   const parsedBody = useWysiwygParser(body);
 
   return (
@@ -35,6 +35,14 @@ function PageBody(props) {
               <LinkButton external link={link.href} text={link.text} />
             </Box>
           ))}
+
+          {children && (
+            <>
+              <Separator extraSpace />
+
+              {children}
+            </>
+          )}
         </Grid>
       </Grid>
 

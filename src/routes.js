@@ -17,6 +17,10 @@ const routes = (t, config = {}) => {
       slug: 'events',
       title: t('events'),
     },
+    gcpAwards: {
+      slug: 'gcp-awards',
+      title: t('gcpAwards'),
+    },
     blog: {
       slug: 'blog',
       title: t('blog'),

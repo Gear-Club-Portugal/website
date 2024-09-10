@@ -26,6 +26,10 @@ const resources = {
       addToCalendar: 'Add to Calendar',
       program: 'Program',
       packs: 'Packs',
+      gcpAwards: 'GCP Awards',
+      categories: 'Categories',
+      nominiees: 'Nominiees:',
+      voteHere: 'Vote Here',
     },
   },
   pt: {
@@ -49,6 +53,10 @@ const resources = {
       addToCalendar: 'Adicionar ao Calendário',
       program: 'Programa',
       packs: 'Pacotes',
+      gcpAwards: 'Prémios GCP',
+      categories: 'Categorias',
+      nominiees: 'Nomeados:',
+      voteHere: 'Vota Aqui',
     },
   },
 };
