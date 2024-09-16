@@ -32,8 +32,6 @@ function Event(props) {
     );
   };
 
-  console.log(event);
-
   return (
     <Box component="article" sx={eventContainerStyles}>
       <Grid container spacing={4}>

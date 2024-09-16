@@ -22,7 +22,7 @@ function EventDetails(props) {
 
 EventDetails.propTypes = {
   title: PropTypes.string.isRequired,
-  body: PropTypes.object.isRequired,
+  body: PropTypes.any.isRequired,
 };
 
 export default EventDetails;

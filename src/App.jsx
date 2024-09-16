@@ -65,6 +65,7 @@ function App() {
               events={events.events[lang] ?? []}
               lang={lang}
               posts={posts.posts[lang] ?? []}
+              sponsors={currentLisbonMeetsFetish.sponsors ?? []}
               routes={localizedPages}
             />
           }

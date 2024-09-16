@@ -44,6 +44,21 @@ export const policyPageType = shape({
   body: string.isRequired,
 });
 
+export const sponsorType = shape({
+  name: string.isRequired,
+  type: string.isRequired,
+  logo: imageType.isRequired,
+});
+
+export const sponsorsType = {
+  sponsors: arrayOf(sponsorType),
+};
+
+export const sponsorsGridType = {
+  title: string.isRequired,
+  sponsors: arrayOf(shape({ sponsors: sponsorType })).isRequired,
+};
+
 export const routesType = object.isRequired; // todo improve
 
 // ==========================================================================
@@ -70,6 +85,7 @@ export const eventType = shape({
   packs: string,
   registerForm: string,
   mainImage: imageType,
+  sponsors: arrayOf(sponsorType),
 }).isRequired;
 
 export const eventsType = arrayOf(eventType).isRequired;
