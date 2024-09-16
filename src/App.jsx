@@ -16,6 +16,7 @@ const GcpAwards = lazy(() => import('./pages/GcpAwards'));
 const Members = lazy(() => import('./pages/Members'));
 const About = lazy(() => import('./pages/About'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 import banners from './assets/data/banners.json';
@@ -35,6 +36,7 @@ function App() {
   const membersPageData = pages.pages[lang].filter((page) => page.slug === 'members')[0];
   const aboutPageData = pages.pages[lang].filter((page) => page.slug === 'about-gcp')[0];
   const privacyPolicyPageData = pages.pages[lang].filter((page) => page.slug === 'privacy-policy')[0];
+  const termsOfUsePageData = pages.pages[lang].filter((page) => page.slug === 'terms-of-use')[0];
 
   const currentLisbonMeetsFetish = useOrderEvents(
     events.events[lang]?.filter((e) => e.type === 'Lisbon Meets Fetish'),
@@ -106,10 +108,16 @@ function App() {
           />
         )}
 
-        <Route
-          path={localizedPages.privacyPolicy.slug}
-          element={<PrivacyPolicy policyData={privacyPolicyPageData} />}
-        />
+        {privacyPolicyPageData && (
+          <Route
+            path={localizedPages.privacyPolicy.slug}
+            element={<PrivacyPolicy policyData={privacyPolicyPageData} />}
+          />
+        )}
+
+        {termsOfUsePageData && (
+          <Route path={localizedPages.termsOfUse.slug} element={<TermsOfUse policyData={termsOfUsePageData} />} />
+        )}
 
         <Route path="*" element={<NotFound />} />
       </Route>
