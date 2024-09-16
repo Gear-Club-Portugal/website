@@ -21,6 +21,7 @@ export const authorType = shape({
 export const pageBodyType = {
   title: string.isRequired,
   body: string.isRequired,
+  footer: string,
   children: object,
   image: imageType.isRequired,
   links: arrayOf(
@@ -96,7 +97,7 @@ export const awardCategoryType = {
   subtitle: string.isRequired,
   description: string.isRequired,
   votingForm: string,
-  nominiees: arrayOf(shape(nominieeType)).isRequired,
+  nominiees: arrayOf(shape(nominieeType)),
 };
 
 export const awardCategoriesType = {

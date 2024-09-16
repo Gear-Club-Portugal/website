@@ -13,8 +13,9 @@ import { pageBodyType } from '~/types';
 const pageStyles = { py: '32px', px: { xs: 0, sm: '16px' }, mt: { xs: 0, sm: '40px' } };
 
 function PageBody(props) {
-  const { title, body, image, links, children } = props;
+  const { title, body, footer, image, links, children } = props;
   const parsedBody = useWysiwygParser(body);
+  const parsedFooter = useWysiwygParser(footer);
 
   return (
     <Box component="main" sx={pageStyles}>
@@ -41,6 +42,13 @@ function PageBody(props) {
               <Separator extraSpace />
 
               {children}
+            </>
+          )}
+
+          {parsedFooter && (
+            <>
+              <Separator extraSpace />
+              <Box sx={{ 'p.MuiTypography-root': { margin: 'revert' } }}>{parsedFooter}</Box>
             </>
           )}
         </Grid>

@@ -27,7 +27,7 @@ const useWysiwygParser = (htmlString, variantMapping = {}) => {
     },
   };
 
-  return <>{htmlString && parse(htmlString, options)}</>;
+  return htmlString && parse(htmlString, options);
 };
 
 export default useWysiwygParser;
