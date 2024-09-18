@@ -9,9 +9,7 @@ function Sponsor(props) {
   const { name, logo } = props;
 
   return (
-    <Box sx={{display: 'inline', mr: '16px', mb: '16px'}}>
-      <Box component="img" src={logo.url} alt={`${name} logo`} sx={mediaStyles} />
-    </Box>
+    <Box component="img" src={logo.url} alt={`${name} logo`} sx={mediaStyles} />
   );
 }
 
