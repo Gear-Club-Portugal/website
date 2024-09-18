@@ -91,6 +91,7 @@ const handleEnventsUpdate = (entries) => {
     const sponsors = sponsorsRaw.map((s) => ({
       name: Object.values(s.fields.name)[0],
       type: Object.values(s.fields.type)[0],
+      url: Object.values(s.fields.url || {})[0],
       logo: Object.values(Object.values(s.fields.logo)[0].fields.file)[0],
     }));
 

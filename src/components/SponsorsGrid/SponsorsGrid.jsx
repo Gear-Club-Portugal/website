@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
@@ -18,7 +17,7 @@ function SponsorsGrid(props) {
 
       <Stack direction="row" spacing={2} useFlexGap sx={{ flexWrap: 'wrap', mb: '16px' }}>
         {sponsors.map((sponsor) => (
-          <Sponsor name={sponsor.name} logo={sponsor.logo} key={`${sponsor.type}-${sponsor.name}`} />
+          <Sponsor key={`${sponsor.type}-${sponsor.name}`} name={sponsor.name} logo={sponsor.logo} url={sponsor.url} />
         ))}
       </Stack>
     </Box>

@@ -47,6 +47,7 @@ export const policyPageType = shape({
 export const sponsorType = shape({
   name: string.isRequired,
   type: string.isRequired,
+  url: string,
   logo: imageType.isRequired,
 });
 

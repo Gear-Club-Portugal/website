@@ -6,9 +6,13 @@ import { sponsorType } from '~/types';
 const mediaStyles = { height: '100px', objectFit: 'contain', borderRadius: '13px' };
 
 function Sponsor(props) {
-  const { name, logo } = props;
+  const { name, logo, url } = props;
 
-  return (
+  return url ? (
+    <Box component="a" href={url} target="_blank" rel="noreferrer">
+      <Box component="img" src={logo.url} alt={`${name} logo`} sx={mediaStyles} />
+    </Box>
+  ) : (
     <Box component="img" src={logo.url} alt={`${name} logo`} sx={mediaStyles} />
   );
 }
