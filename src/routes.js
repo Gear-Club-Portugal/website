@@ -37,10 +37,10 @@ const routes = (t, config = {}) => {
       slug: 'privacy-policy',
       title: t('privacyPolicy'),
     },
-    termsOfUse: {
-      slug: 'terms-of-use',
-      title: t('termsOfUse'),
-    },
+    // termsOfUse: {
+    //   slug: 'terms-of-use',
+    //   title: t('termsOfUse'),
+    // },
   };
 
   return r;

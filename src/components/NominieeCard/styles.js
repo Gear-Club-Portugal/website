@@ -7,13 +7,22 @@ export const card = {
   flexDirection: { xs: 'column', md: 'row' },
 };
 
-export const cardMedia = {
+export const cardMediaContainer = {
   height: '200px',
   width: '200px',
   minWidth: '200px',
   minHeight: '200px',
-  objectFit: 'none',
   backgroundColor: '#ffffff',
+  borderRadius: '50%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+export const cardMedia = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'contain',
   borderRadius: '50%',
 };
 

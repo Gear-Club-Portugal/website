@@ -9,6 +9,7 @@ import { fontWeight } from '~/theme.js';
 
 import {
   card as cardStyles,
+  cardMediaContainer as cardMediaContainerStyles,
   cardMedia as cardMediaStyles,
   cardContentContainer as cardContentContainerStyles,
   cardContent as cardContentStyles,
@@ -19,7 +20,9 @@ function NominieeCard(props) {
 
   return (
     <Card sx={cardStyles} raised={false}>
-      <CardMedia component="img" sx={cardMediaStyles} image={logo.url} alt={logo.fileName} />
+      <Box sx={cardMediaContainerStyles}>
+        <CardMedia component="img" sx={cardMediaStyles} image={logo.url} alt={logo.fileName} />
+      </Box>
 
       <Box sx={cardContentContainerStyles}>
         <CardContent sx={cardContentStyles}>

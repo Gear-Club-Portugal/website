@@ -16,7 +16,10 @@ const linkButtonStyles = { color: '#fff', width: '100%', justifyContent: 'left' 
 function PoliciesSiteMap(props) {
   const { routes } = props;
 
-  const pages = [routes.privacyPolicy, routes.termsOfUse];
+  const pages = [
+    routes.privacyPolicy,
+    // routes.termsOfUse
+  ];
 
   return (
     <Box component="ul" sx={ulStyles}>

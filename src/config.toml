@@ -12,9 +12,9 @@
     subtitle2 = "september ‘24"
     image = "assets/Banner-hero mobile.png"
 
-[newsletter]
-    formUrl = "https://sow6n.mjt.lu/wgt/sow6n/x3ux/form?c=e05debff"
-    embebedHelperScript = "https://app.mailjet.com/pas-nc-embedded-v1.js"
+#[newsletter]
+#    formUrl = "https://sow6n.mjt.lu/wgt/sow6n/x3ux/form?c=e05debff"
+#    embebedHelperScript = "https://app.mailjet.com/pas-nc-embedded-v1.js"
 
 [events]
     calendar = "https://calendar.gearclubportugal.com/"
