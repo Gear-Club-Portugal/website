@@ -12,7 +12,7 @@
     "format:check": "npx prettier ./src/ --check",
     "preview": "vite preview",
     "download-data": "node --env-file=.env ./scripts/download-content.cjs",
-    "download-data-and-build": "yarn run download-data && yarn build"
+    "download-data-and-build": "node ./scripts/download-content.cjs && yarn build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
