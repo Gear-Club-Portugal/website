@@ -17,6 +17,8 @@ const wysiwygVariantMapping = { h4: 'h4', body1: 'body1' };
 
 const eventContainerStyles = { py: '32px', px: { xs: 0, sm: '16px' }, mt: { xs: 0, sm: '40px' } };
 
+const eventsCalendarUrl = 'https://calendar.gearclubportugal.com';
+
 function Event(props) {
   const { event } = props;
   const { t } = useTranslation();
@@ -45,7 +47,7 @@ function Event(props) {
           {event.registerForm && registrationButton()}
 
           <Box sx={{ mt: '16px' }}>
-            <LinkButton external link={''} text={t('addToCalendar')} />
+            <LinkButton external link={eventsCalendarUrl} text={t('addToCalendar')} />
           </Box>
 
           {event?.program && (
