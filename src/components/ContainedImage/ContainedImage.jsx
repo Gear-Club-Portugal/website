@@ -2,7 +2,8 @@ import Box from '@mui/material/Box';
 
 import { imageType } from '~/types';
 
-const imageContainerStyles = { width: '100%', height: '250px' };
+// const imageContainerStyles = { width: '100%', height: '250px' };
+const imageContainerStyles = { width: '100%', height: 'auto' };
 const imageStyles = { width: '100%', height: '100%', objectFit: 'contain' };
 
 function ContainedImage(props) {

@@ -27,7 +27,7 @@ function Event(props) {
         <>
           <EventContainer event={event} />
 
-          {event.sponsors && (
+          {event?.sponsors && event.sponsors.length > 0 && (
             <Grid container spacing={4}>
               <Grid item xs={12} sm={4} />
 
