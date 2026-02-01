@@ -12,6 +12,7 @@ import '@fontsource/oswald/700.css';
 import './main.css';
 
 import { theme } from './theme.js';
+import ScrollToTop from "./helpers/ScrollToTop";
 import './i18n';
 
 import App from './App.jsx';
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <ScrollToTop />
         <App />
       </ThemeProvider>
     </BrowserRouter>

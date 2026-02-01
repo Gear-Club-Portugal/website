@@ -62,7 +62,7 @@ function App() {
           element={
             <Home
               bannerItems={banners.banners[lang] ?? []}
-              events={events.events[lang] ?? []}
+              events={structuredClone(events).events[lang] ?? []}
               lang={lang}
               posts={posts.posts[lang] ?? []}
               sponsors={currentLisbonMeetsFetish.sponsors ?? []}

@@ -78,7 +78,7 @@ export const eventType = shape({
   name: string.isRequired,
   shortName: string,
   slug: string.isRequired,
-  description: string.isRequired,
+  description: string,
   eventDate: string.isRequired,
   textualEventDate: string.isRequired,
   location: string.isRequired,
