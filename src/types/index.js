@@ -86,6 +86,7 @@ export const eventType = shape({
   packs: string,
   registerForm: string,
   mainImage: imageType,
+  coverImage: imageType,
   sponsors: arrayOf(sponsorType),
 }).isRequired;
 
