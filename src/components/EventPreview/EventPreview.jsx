@@ -22,7 +22,7 @@ function EventPreview(props) {
             title: event.shortName || event.name,
             subtitle1: event.location,
             subtitle2: event.textualEventDate,
-            image: event.mainImage.url,
+            image: event?.coverImage?.url || event.mainImage.url,
             height: { xs: '200px', sm: '200px' },
           }}
           onHero={false}

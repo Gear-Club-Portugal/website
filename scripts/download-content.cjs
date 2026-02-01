@@ -85,6 +85,7 @@ const handleEnventsUpdate = (entries) => {
     const type = Object.values(fields.type)[0];
     const eventDate = Object.values(fields.eventDate)[0];
     const mainImage = Object.values(Object.values(fields.mainImage)[0].fields.file)[0];
+    const coverImage = fields?.coverImage && Object.values(Object.values(fields.coverImage)[0].fields.file)[0];
     const registerForm = Object.values(fields.registerForm || {})[0];
 
     const sponsorsRaw = Object.values(fields.sponsors || {}).flat();
@@ -95,7 +96,7 @@ const handleEnventsUpdate = (entries) => {
       logo: Object.values(Object.values(s.fields.logo)[0].fields.file)[0],
     }));
 
-    const itemData = { slug, type, eventDate, mainImage, registerForm, sponsors };
+    const itemData = { slug, type, eventDate, mainImage, coverImage, registerForm, sponsors };
 
     data[contentType][LOCALE_PT].push({
       ...itemData,
