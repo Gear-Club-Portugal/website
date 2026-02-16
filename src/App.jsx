@@ -15,6 +15,7 @@ const Events = lazy(() => import('./pages/Events'));
 const GcpAwards = lazy(() => import('./pages/GcpAwards'));
 const Members = lazy(() => import('./pages/Members'));
 const About = lazy(() => import('./pages/About'));
+const Sel = lazy(() => import('./pages/Sel'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -35,6 +36,7 @@ function App() {
   const gcpAwardsPageData = pages.pages[lang].filter((page) => page.slug === 'gcp-awards')[0];
   const membersPageData = pages.pages[lang].filter((page) => page.slug === 'members')[0];
   const aboutPageData = pages.pages[lang].filter((page) => page.slug === 'about-gcp')[0];
+  const selPageData = pages.pages[lang].filter((page) => page.slug === 'sel')[0];
   const privacyPolicyPageData = pages.pages[lang].filter((page) => page.slug === 'privacy-policy')[0];
   const termsOfUsePageData = pages.pages[lang].filter((page) => page.slug === 'terms-of-use')[0];
 
@@ -105,6 +107,15 @@ function App() {
             path={localizedPages.aboutGcp.slug}
             element={
               <About pageData={{ ...aboutPageData, title: aboutPageData.name, image: aboutPageData.mainImage }} />
+            }
+          />
+        )}
+
+        {selPageData && (
+          <Route
+            path={localizedPages.sel.slug}
+            element={
+              <Sel pageData={{ ...selPageData, title: selPageData.name, image: selPageData.mainImage }} />
             }
           />
         )}

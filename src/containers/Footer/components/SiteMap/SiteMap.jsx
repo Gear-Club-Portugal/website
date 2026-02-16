@@ -47,6 +47,7 @@ function SiteMap(props) {
     routes.events,
     routes.blog,
     routes.members,
+    routes.sel,
     routes.aboutGcp,
   ].filter((p) => p);
 
