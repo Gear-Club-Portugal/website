@@ -54,7 +54,7 @@ function Event(props) {
             <>
               <Separator extraSpace />
 
-              <EventDetails title={t('program')} body={eventProgram} />
+              <EventDetails title={t('program')} body={eventProgram} enableStylesOverride />
             </>
           )}
 
