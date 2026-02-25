@@ -4,10 +4,16 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-const wysiwygStyles = { h4: 'h4', body1: 'body1' };
+import { theme } from '~/theme.js';
+
+const wysiwygStyles = {
+  '& p': { ...theme.typography.caption, fontStyle: 'italic' },
+  '& h5': { ...theme.typography.body1, marginTop: '16px' },
+  'h4:not(:first-of-type)': { marginTop: '48px' },
+};
 
 function EventDetails(props) {
-  const { title, body } = props;
+  const { title, body, enableStylesOverride } = props;
 
   return (
     <Box>
@@ -15,7 +21,7 @@ function EventDetails(props) {
         {title}
       </Typography>
 
-      <Box sx={wysiwygStyles}>{body}</Box>
+      <Box sx={enableStylesOverride ? wysiwygStyles : {}}>{body}</Box>
     </Box>
   );
 }
@@ -23,6 +29,7 @@ function EventDetails(props) {
 EventDetails.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.any.isRequired,
+  enableStylesOverride: PropTypes.bool,
 };
 
 export default EventDetails;

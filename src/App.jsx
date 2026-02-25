@@ -114,9 +114,7 @@ function App() {
         {selPageData && (
           <Route
             path={localizedPages.sel.slug}
-            element={
-              <Sel pageData={{ ...selPageData, title: selPageData.name, image: selPageData.mainImage }} />
-            }
+            element={<Sel pageData={{ ...selPageData, title: selPageData.name, image: selPageData.mainImage }} />}
           />
         )}
 
