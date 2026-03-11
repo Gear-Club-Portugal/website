@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 const itemStyles = {
   py: '20px',
   px: '24px',
-  height: { xs: '300px', sm: '600px' },
+  aspectRatio: '2/1',
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
@@ -36,7 +36,7 @@ function ImageHero(props) {
     <Paper
       sx={{
         ...itemStyles,
-        height: item.height ? item.height : itemStyles.height,
+        ...(item.height ? { height: item.height, aspectRatio: 'unset' } : {}),
       }}
     >
       <Box component="img" src={item.image} alt={item.title} sx={imgStyles} />
