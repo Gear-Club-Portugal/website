@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -12,12 +12,11 @@ import { postsType } from '~/types';
 function BlogPost(props) {
   const { posts } = props;
   const { slug } = useParams();
-  const [post, setPost] = useState();
+  const post = useMemo(() => posts.find((p) => p.slug === slug), [posts, slug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setPost(posts.find((p) => p.slug === slug));
-  }, [posts, slug]);
+  }, [slug]);
 
   return (
     <Box component="main">

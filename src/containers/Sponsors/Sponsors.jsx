@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 
 import Box from '@mui/material/Box';
 
@@ -9,17 +9,10 @@ import { sponsorsType } from '~/types';
 
 function Sponsors(props) {
   const { sponsors } = props;
-  const [parsedSponsors, setParsedSponsors] = useState({});
-
-  useEffect(() => {
-    const parsedSponsorsTmp = {};
-
-    sponsors.map(
-      (sponsor) => (parsedSponsorsTmp[sponsor.type] = (parsedSponsorsTmp[sponsor.type] || []).concat(sponsor)),
-    );
-
-    setParsedSponsors(parsedSponsorsTmp);
-  }, [sponsors]);
+  const parsedSponsors = useMemo(
+    () => sponsors.reduce((acc, sponsor) => ({ ...acc, [sponsor.type]: (acc[sponsor.type] || []).concat(sponsor) }), {}),
+    [sponsors],
+  );
 
   return (
     <Box>

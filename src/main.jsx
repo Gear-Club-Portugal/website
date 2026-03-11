@@ -12,7 +12,7 @@ import '@fontsource/oswald/700.css';
 import './main.css';
 
 import { theme } from './theme.js';
-import ScrollToTop from './helpers/ScrollToTop';
+import ScrollToTop from './helpers/ScrollToTop.jsx';
 import './i18n';
 
 import App from './App.jsx';

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "format": "npx prettier ./src/ ./scripts/ --write",
     "format:check": "npx prettier ./src/ --check",
     "preview": "vite preview",
@@ -34,22 +34,25 @@
   },
   "resolutions": {
     "rollup": "^4.59.0",
-    "tar": "^7.5.11"
+    "tar": "^7.5.11",
+    "qs": "^6.15.0"
   },
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^16.3.5",
+    "@eslint/js": "^9.0.0",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react": "^5.1.2",
     "contentful": "^10.8.3",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^16.0.0",
     "prettier": "^3.2.5",
     "vite": "^7.3.1",
     "vite-plugin-toml": "^0.6.0"

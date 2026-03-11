@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -14,12 +14,11 @@ import SponsorsContainer from '~/containers/Sponsors';
 function Event(props) {
   const { events } = props;
   const { slug } = useParams();
-  const [event, setEvent] = useState();
+  const event = useMemo(() => events.find((e) => e.slug === slug), [events, slug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setEvent(events.find((e) => e.slug === slug));
-  }, [events, slug]);
+  }, [slug]);
 
   return (
     <Box component="main">
