@@ -23,7 +23,13 @@ function PostPreview(props) {
         to={`/${lang}/blog/${post.slug}`}
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
-        <CardMedia component="img" height="200" image={post.mainImage.url} alt={post.mainImage.fileName} loading="lazy" />
+        <CardMedia
+          component="img"
+          height="200"
+          image={post.mainImage.url}
+          alt={post.mainImage.fileName}
+          loading="lazy"
+        />
 
         <CardContent sx={{ flexGrow: 1, width: '100%' }}>
           <Typography variant="h5">{post.title}</Typography>
