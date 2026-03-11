@@ -11,7 +11,7 @@ function ContainedImage(props) {
 
   return (
     <Box sx={imageContainerStyles}>
-      <Box component="img" src={image.url} alt={image.fileName} sx={imageStyles} />
+      <Box component="img" src={image.url} alt={image.fileName} loading="lazy" sx={imageStyles} />
     </Box>
   );
 }

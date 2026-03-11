@@ -1,18 +1,19 @@
-const useNextEvents = (events, ammount = 3) => {
-  const today = new Date();
-  const sortedEvents = events.sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
+import { useMemo } from 'react';
 
-  const upcomingEvents = sortedEvents.filter((event) => new Date(event.eventDate) >= today);
-  const pastEvents = sortedEvents.filter((event) => new Date(event.eventDate) < today);
+const useNextEvents = (events, amount = 3) =>
+  useMemo(() => {
+    const today = new Date();
+    const sorted = [...events].sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
 
-  const sortedPastEvents = pastEvents.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
+    const upcoming = sorted.filter((e) => new Date(e.eventDate) >= today);
+    const past = sorted.filter((e) => new Date(e.eventDate) < today).reverse();
 
-  let nextEvents = upcomingEvents.slice(0, ammount);
-  if (nextEvents.length < ammount) {
-    nextEvents = nextEvents.concat(sortedPastEvents.slice(0, 3 - nextEvents.length));
-  }
+    const next = upcoming.slice(0, amount);
+    if (next.length < amount) {
+      return next.concat(past.slice(0, amount - next.length));
+    }
 
-  return nextEvents;
-};
+    return next;
+  }, [events, amount]);
 
 export default useNextEvents;

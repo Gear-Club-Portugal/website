@@ -1,8 +1,10 @@
-const useTextFromHtml = (body) => {
-  const div = document.createElement('div');
-  div.innerHTML = body;
+import { useMemo } from 'react';
 
-  return div.textContent || div.innerText || '';
-};
+const useTextFromHtml = (body) =>
+  useMemo(() => {
+    const div = document.createElement('div');
+    div.innerHTML = body;
+    return div.textContent || div.innerText || '';
+  }, [body]);
 
 export default useTextFromHtml;
