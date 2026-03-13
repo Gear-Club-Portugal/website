@@ -23,6 +23,12 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Create stub data files
+        run: |
+          for f in banners events awards pages posts; do
+            echo '{}' > src/assets/data/$f.json
+          done
+
       - name: Lint
         run: yarn lint
 
