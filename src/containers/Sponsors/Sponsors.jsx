@@ -10,7 +10,8 @@ import { sponsorsType } from '~/types';
 function Sponsors(props) {
   const { sponsors } = props;
   const parsedSponsors = useMemo(
-    () => sponsors.reduce((acc, sponsor) => ({ ...acc, [sponsor.type]: (acc[sponsor.type] || []).concat(sponsor) }), {}),
+    () =>
+      sponsors.reduce((acc, sponsor) => ({ ...acc, [sponsor.type]: (acc[sponsor.type] || []).concat(sponsor) }), {}),
     [sponsors],
   );
 
