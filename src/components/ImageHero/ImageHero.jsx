@@ -30,7 +30,7 @@ const titleStyles = { background: '#ffffff', opacity: '80%', color: '#000000', p
 const subtitleStyles = { ...titleStyles, color: '#940607' };
 
 function ImageHero(props) {
-  const { item, onHero } = props;
+  const { item, onHero, showOverlay } = props;
 
   return (
     <Paper
@@ -41,20 +41,24 @@ function ImageHero(props) {
     >
       <Box component="img" src={item.image} alt={item.title} sx={imgStyles} />
 
-      <Box sx={{ flexGrow: 1, position: 'relative' }}>
-        <Box>
-          <Typography variant={onHero ? 'h1' : 'h4'} sx={titleStyles}>
-            {item.title}
-          </Typography>
-        </Box>
-      </Box>
+      {showOverlay && (
+        <>
+          <Box sx={{ flexGrow: 1, position: 'relative' }}>
+            <Box>
+              <Typography variant={onHero ? 'h1' : 'h4'} sx={titleStyles}>
+                {item.title}
+              </Typography>
+            </Box>
+          </Box>
 
-      <Box sx={{ position: 'relative' }}>
-        <Typography variant="h6" sx={subtitleStyles}>
-          {item.subtitle1}
-        </Typography>
-        <Typography sx={{ ...subtitleStyles, mt: '4px' }}>{item.subtitle2}</Typography>
-      </Box>
+          <Box sx={{ position: 'relative' }}>
+            <Typography variant="h6" sx={subtitleStyles}>
+              {item.subtitle1}
+            </Typography>
+            <Typography sx={{ ...subtitleStyles, mt: '4px' }}>{item.subtitle2}</Typography>
+          </Box>
+        </>
+      )}
     </Paper>
   );
 }
@@ -71,10 +75,12 @@ ImageHero.propTypes = {
     }),
   }),
   onHero: PropTypes.bool,
+  showOverlay: PropTypes.bool,
 };
 
 ImageHero.defaultProps = {
   onHero: true,
+  showOverlay: true,
 };
 
 export default ImageHero;

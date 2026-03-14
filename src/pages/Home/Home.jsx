@@ -15,7 +15,7 @@ function Home(props) {
 
   return (
     <Box component="main">
-      <BannerHero items={bannerItems} />
+      <BannerHero items={bannerItems} showOverlay={false} />
 
       <Separator extraSpace />
 
