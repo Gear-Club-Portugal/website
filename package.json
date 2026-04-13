@@ -39,7 +39,11 @@
     "eslint-plugin-import/minimatch": "3.1.5",
     "eslint-plugin-jsx-a11y/minimatch": "3.1.5",
     "eslint-plugin-react/minimatch": "3.1.5",
-    "glob/minimatch": "9.0.7"
+    "glob/minimatch": "9.0.7",
+    "axios": "^1.15.0",
+    "brace-expansion@^1.1.7": "^1.1.14",
+    "picomatch@^2.3.1": "^2.3.2",
+    "yaml@^1.10.0": "^1.10.3"
   },
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^16.3.5",
@@ -58,7 +62,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^16.0.0",
     "prettier": "^3.2.5",
-    "vite": "^7.3.1",
+    "vite": "^7.3.2",
     "vite-plugin-toml": "^0.6.0"
   }
 }
