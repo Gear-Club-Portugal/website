@@ -11,9 +11,8 @@ node_modules
 dist
 dist-ssr
 public/data
-*.local
+*.local*
 .env*
-.claude
 
 # Yarn
 .yarn/*
