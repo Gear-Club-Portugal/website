@@ -71,6 +71,17 @@ yarn download-data-and-build   # full production build
 - Do not use `yarn add --dev` for runtime dependencies or vice versa.
 - The `resolutions` field in `package.json` is used to force patched versions of transitive dependencies when upstream hasn't updated. Document the reason in a commit message.
 
+## Specialized agents
+
+Use these sub-agents for focused tasks:
+
+| Agent | When to use |
+|---|---|
+| `dependency-auditor` | Dependabot alerts, security advisories, Yarn resolutions |
+| `ui-developer` | React components, MUI styling, i18n, routing |
+| `content-pipeline` | Contentful schema, download script, build data flow |
+| `code-reviewer` | Pre-merge review of any change for security, quality, correctness |
+
 ## CI
 
 GitHub Actions runs on every PR to `dev`:
