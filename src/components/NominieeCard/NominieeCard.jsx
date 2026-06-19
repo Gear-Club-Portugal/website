@@ -1,10 +1,14 @@
+import PropTypes from 'prop-types';
+
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-import { nominieeType } from '~/types';
+import LinkButton from '~/components/LinkButton';
+
+import { winnerType } from '~/types';
 import { fontWeight } from '~/theme.js';
 
 import {
@@ -16,7 +20,7 @@ import {
 } from './styles.js';
 
 function NominieeCard(props) {
-  const { name, description, logo } = props;
+  const { name, description, logo, link } = props;
 
   return (
     <Card sx={cardStyles} raised={false}>
@@ -28,15 +32,20 @@ function NominieeCard(props) {
         <CardContent sx={cardContentStyles}>
           <Typography variant="h4">{name}</Typography>
 
-          <Typography variant="body2" sx={{ fontWeight: fontWeight.regular }}>
-            {description}
-          </Typography>
+          {link && (
+            <Box sx={{ marginTop: '16px' }}>
+              <LinkButton external link={link} text={name} />
+            </Box>
+          )}
         </CardContent>
       </Box>
     </Card>
   );
 }
 
-NominieeCard.propTypes = nominieeType;
+NominieeCard.propTypes = {
+  ...winnerType,
+  link: PropTypes.string,
+};
 
 export default NominieeCard;

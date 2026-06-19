@@ -15,10 +15,8 @@ function AwardCategories(props) {
           <Box key={category.title}>
             <AwardCategory
               title={category.title}
-              subtitle={category.subtitle}
               description={category.description}
-              votingForm={category.votingForm}
-              nominies={category.nominies}
+              winners={category.winners ?? []}
             />
 
             {index + 1 < categories.length && <Separator extraSpace />}

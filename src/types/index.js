@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const { shape, string, arrayOf, object } = PropTypes;
+const { shape, string, number, arrayOf, object } = PropTypes;
 
 export const imageType = shape({
   url: string.isRequired,
@@ -104,18 +104,19 @@ export const postType = shape({
 
 export const postsType = arrayOf(postType).isRequired;
 
-export const nominieeType = {
+export const winnerType = {
+  year: string.isRequired,
   name: string.isRequired,
   description: string.isRequired,
   logo: imageType.isRequired,
+  link: string,
 };
 
 export const awardCategoryType = {
+  order: number.isRequired,
   title: string.isRequired,
-  subtitle: string.isRequired,
   description: string.isRequired,
-  votingForm: string,
-  nominiees: arrayOf(shape(nominieeType)),
+  winners: arrayOf(shape(winnerType)),
 };
 
 export const awardCategoriesType = {

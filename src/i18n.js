@@ -30,8 +30,8 @@ const resources = {
       packs: 'Packs',
       gcpAwards: 'GCP Awards',
       categories: 'Categories',
-      nominiees: 'Nominiees:',
-      voteHere: 'Vote Here',
+      winners_one: 'Winner:',
+      winners_other: 'Winners:',
     },
   },
   pt: {
@@ -59,8 +59,8 @@ const resources = {
       packs: 'Pacotes',
       gcpAwards: 'Prémios GCP',
       categories: 'Categorias',
-      nominiees: 'Nomeados:',
-      voteHere: 'Vota Aqui',
+      winners_one: 'Vencedor:',
+      winners_other: 'Vencedores:',
     },
   },
 };

@@ -183,38 +183,59 @@ const handlePagesUpdate = (entries) => {
   fileWritter({ contentType, content: data });
 };
 
-const handleAwardsUpdate = (entries) => {
-  const { items } = entries;
+const handleAwardsUpdate = (awardEntries, nominieEntries) => {
   const contentType = 'awards';
   const data = { [contentType]: { [LOCALE_PT]: [], [LOCALE_EN]: [] } };
 
-  items.map((item) => {
-    const { fields } = item;
-    const { title, subtitle, description } = fields;
-    const votingForm = Object.values(fields?.votingForm || {})[0];
+  const nominiesByAwardId = {};
+  nominieEntries.items.map((item) => {
+    const { sys, fields } = item;
+    const awardId = Object.values(fields.award)[0].sys.id;
+    const logo = Object.values(Object.values(fields.logo)[0].fields.file)[0];
+    const year = String(Object.values(fields.year)[0]);
+    const name = Object.values(fields.name)[0];
+    const link = Object.values(fields.link || {})[0] ?? null;
 
-    const nominiesRaw = Object.values(fields.nominies || {}).flat();
-    const nominies = nominiesRaw.map((s) => ({
-      name: Object.values(s.fields.name)[0],
-      description: s.fields.description,
-      logo: Object.values(Object.values(s.fields.logo)[0].fields.file)[0],
-    }));
+    if (!nominiesByAwardId[awardId]) nominiesByAwardId[awardId] = [];
+    nominiesByAwardId[awardId].push({
+      id: sys.id,
+      year,
+      name,
+      logo,
+      link,
+      description: fields.description,
+    });
+  });
 
-    const itemData = { votingForm };
+  awardEntries.items.map((item) => {
+    const { sys, fields } = item;
+    const { title, description } = fields;
+    const order = Object.values(fields.order)[0];
+    const rawNominies = nominiesByAwardId[sys.id] ?? [];
 
     data[contentType][LOCALE_PT].push({
-      ...itemData,
+      order,
       title: title[CONFLUENT_LOCALE_PT],
-      subtitle: subtitle[CONFLUENT_LOCALE_PT],
       description: description[CONFLUENT_LOCALE_PT],
-      nominies: nominies.map((nominie) => ({ ...nominie, description: nominie.description[CONFLUENT_LOCALE_PT] })),
+      winners: rawNominies.map((n) => ({
+        year: n.year,
+        name: n.name,
+        description: n.description[CONFLUENT_LOCALE_PT],
+        logo: n.logo,
+        link: n.link,
+      })),
     });
     data[contentType][LOCALE_EN].push({
-      ...itemData,
+      order,
       title: title[CONFLUENT_LOCALE_EN],
-      subtitle: subtitle[CONFLUENT_LOCALE_EN],
       description: description[CONFLUENT_LOCALE_EN],
-      nominies: nominies.map((nominie) => ({ ...nominie, description: nominie.description[CONFLUENT_LOCALE_EN] })),
+      winners: rawNominies.map((n) => ({
+        year: n.year,
+        name: n.name,
+        description: n.description[CONFLUENT_LOCALE_EN],
+        logo: n.logo,
+        link: n.link,
+      })),
     });
   });
 
@@ -241,7 +262,9 @@ client.withAllLocales
   .then((entries) => handlePagesUpdate(entries))
   .catch((error) => console.error(error));
 
-client.withAllLocales
-  .getEntries({ content_type: 'award', order: 'fields.order' })
-  .then((entries) => handleAwardsUpdate(entries))
+Promise.all([
+  client.withAllLocales.getEntries({ content_type: 'award', order: 'fields.order' }),
+  client.withAllLocales.getEntries({ content_type: 'awardNominy', order: '-fields.year' }),
+])
+  .then(([awards, nominies]) => handleAwardsUpdate(awards, nominies))
   .catch((error) => console.error(error));
