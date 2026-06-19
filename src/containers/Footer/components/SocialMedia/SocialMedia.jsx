@@ -27,7 +27,7 @@ function SocialMedia(props) {
           text={`Facebook @ ${socials.facebook.id}`}
         />
 
-        <LinkButton external link={`https://x.com/${socials.x.id}`} text={`X @ ${socials.x.id}`} />
+        <LinkButton external link={`https://bsky.app/profile/${socials.bsky.id}`} text={`bsky @ ${socials.bsky.id}`} />
       </Box>
     </Box>
   );
@@ -37,7 +37,7 @@ SocialMedia.propTypes = {
   socials: PropTypes.shape({
     instagram: PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired,
     facebook: PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired,
-    x: PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired,
+    bsky: PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired,
   }).isRequired,
 };
 

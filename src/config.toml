@@ -25,9 +25,9 @@
 [socials]
     [socials.facebook]
     id = "gearclubportugal.page"
-    
+
     [socials.instagram]
     id = "gearclubportugal"
-    
-    [socials.x]
-    id = "ClubeGear"
+
+    [socials.bsky]
+    id = "gearclubportugal.bsky.social"

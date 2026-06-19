@@ -29,6 +29,10 @@ const routes = (t, config = {}) => {
       slug: 'members',
       title: t('members'),
     },
+    ecmc: {
+      slug: 'ecmc',
+      title: t('ecmc'),
+    },
     sel: {
       slug: 'sel',
       title: t('sel'),

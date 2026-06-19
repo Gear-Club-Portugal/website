@@ -43,10 +43,11 @@ function SiteMap(props) {
   const pages = [
     routes.home,
     routes.lisbonMeetsFetish,
-    routes.gcpAwards,
     routes.events,
+    routes.gcpAwards,
     routes.blog,
     routes.members,
+    routes.ecmc,
     routes.sel,
     routes.aboutGcp,
   ].filter((p) => p);

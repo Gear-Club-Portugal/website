@@ -20,10 +20,11 @@ function MainNavigation(props) {
 
   const pages = [
     routes.lisbonMeetsFetish,
-    routes.gcpAwards,
     routes.events,
+    routes.gcpAwards,
     routes.blog,
     routes.members,
+    routes.ecmc,
     routes.sel,
     routes.aboutGcp,
   ].filter((p) => p);
