@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import ContainedImage from '~/components/ContainedImage';
 
 import useWysiwygParser from '~/hooks/useWysiwygParser.jsx';
+import { useCapHeightOffset } from '~/hooks/useCapHeightOffset';
 
 import ArticleHeader from './components/ArticleHeader';
 
@@ -14,13 +15,16 @@ const articleStyles = { py: '32px', px: { xs: 0, sm: '16px' }, mt: { xs: 0, sm: 
 function BlogPost(props) {
   const { post } = props;
 
+  const imageTopOffset = useCapHeightOffset('h3');
   const articleBody = useWysiwygParser(post?.body);
 
   return (
     <Box component="article" sx={articleStyles}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={4}>
-          <ContainedImage image={post.mainImage} />
+          <Box sx={{ mt: { sm: imageTopOffset } }}>
+            <ContainedImage image={post.mainImage} />
+          </Box>
         </Grid>
 
         <Grid item xs={12} sm={8}>

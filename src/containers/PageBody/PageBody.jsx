@@ -7,6 +7,7 @@ import LinkButton from '~/components/LinkButton';
 import Separator from '~/components/Separator';
 
 import useWysiwygParser from '~/hooks/useWysiwygParser.jsx';
+import { useCapHeightOffset } from '~/hooks/useCapHeightOffset';
 
 import { pageBodyType } from '~/types';
 
@@ -14,6 +15,7 @@ const pageStyles = { py: '32px', px: { xs: 0, sm: '16px' }, mt: { xs: 0, sm: '40
 
 function PageBody(props) {
   const { title, body, footer, image, links, children } = props;
+  const imageTopOffset = useCapHeightOffset('h3');
   const parsedBody = useWysiwygParser(body);
   const parsedFooter = useWysiwygParser(footer);
 
@@ -21,7 +23,9 @@ function PageBody(props) {
     <Box component="main" sx={pageStyles}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={4}>
-          <ContainedImage image={image} />
+          <Box sx={{ mt: { sm: imageTopOffset } }}>
+            <ContainedImage image={image} />
+          </Box>
         </Grid>
 
         <Grid item xs={12} sm={8}>

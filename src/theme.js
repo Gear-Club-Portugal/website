@@ -51,6 +51,7 @@ theme.typography.h1 = {
 theme.typography.h3 = {
   fontFamily: theme.typography.fontFamily,
   fontSize: 32,
+  lineHeight: 1.2,
   fontWeight: fontWeight.bold,
   [theme.breakpoints.down('sm')]: {
     fontSize: 26,

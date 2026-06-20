@@ -12,6 +12,7 @@ import Separator from '~/components/Separator';
 import EventDetails from './components/EventDetails';
 
 import useWysiwygParser from '~/hooks/useWysiwygParser.jsx';
+import { useCapHeightOffset } from '~/hooks/useCapHeightOffset';
 
 const wysiwygVariantMapping = { h4: 'h4', body1: 'body1' };
 
@@ -22,6 +23,7 @@ const eventsCalendarUrl = 'https://calendar.gearclubportugal.com';
 function Event(props) {
   const { event } = props;
   const { t } = useTranslation();
+  const imageTopOffset = useCapHeightOffset('h3');
   const eventDescription = useWysiwygParser(event?.description, wysiwygVariantMapping);
   const eventProgram = useWysiwygParser(event?.program, wysiwygVariantMapping);
   const eventPacks = useWysiwygParser(event?.packs, wysiwygVariantMapping);
@@ -38,7 +40,9 @@ function Event(props) {
     <Box component="article" sx={eventContainerStyles}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={4}>
-          <ContainedImage image={event.mainImage} />
+          <Box sx={{ mt: { sm: imageTopOffset } }}>
+            <ContainedImage image={event.mainImage} />
+          </Box>
         </Grid>
 
         <Grid item xs={12} sm={8}>
