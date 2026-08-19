@@ -13,11 +13,7 @@ function AwardCategories(props) {
       {categories.map((category, index) => {
         return (
           <Box key={category.title}>
-            <AwardCategory
-              title={category.title}
-              description={category.description}
-              winners={category.winners ?? []}
-            />
+            <AwardCategory title={category.title} description={category.description} winners={category.winners ?? []} />
 
             {index + 1 < categories.length && <Separator extraSpace />}
           </Box>

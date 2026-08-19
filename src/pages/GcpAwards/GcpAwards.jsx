@@ -16,7 +16,12 @@ function groupByYear(categories) {
     category.winners.forEach((winner) => {
       if (!yearsMap[winner.year]) yearsMap[winner.year] = {};
       if (!yearsMap[winner.year][category.title]) {
-        yearsMap[winner.year][category.title] = { order: category.order, title: category.title, description: category.description, winners: [] };
+        yearsMap[winner.year][category.title] = {
+          order: category.order,
+          title: category.title,
+          description: category.description,
+          winners: [],
+        };
       }
       yearsMap[winner.year][category.title].winners.push(winner);
     });
