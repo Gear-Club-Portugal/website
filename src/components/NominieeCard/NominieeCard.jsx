@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import LinkButton from '~/components/LinkButton';
 
 import { winnerType } from '~/types';
-import { fontWeight } from '~/theme.js';
 
 import {
   card as cardStyles,
@@ -20,7 +19,7 @@ import {
 } from './styles.js';
 
 function NominieeCard(props) {
-  const { name, description, logo, link } = props;
+  const { name, logo, link } = props;
 
   return (
     <Card sx={cardStyles} raised={false}>
